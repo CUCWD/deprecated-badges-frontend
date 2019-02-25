@@ -1,6 +1,6 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/edx/front-end-cookie-cutter-application.svg)](https://greenkeeper.io/)
 
-# 🍪 front-end-cookie-cutter 🍪
+# badges-frontend
 
 Please tag **@edx/fedx-team** on any PRs or issues.
 
