@@ -3,9 +3,11 @@ import { routerMiddleware } from 'connected-react-router';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
-import history from './history';
-import createRootReducer from './reducers';
-import apiClient from './apiClient';
+import history from '../history';
+import createRootReducer from '../reducers';
+import apiClient from '../apiClient';
+
+import { loadCourseBadges } from '../actions/progress';
 
 const initialState = apiClient.getAuthenticationState();
 const loggerMiddleware = createLogger();
@@ -20,4 +22,7 @@ const store = createStore(
   )),
 );
 
+store.dispatch(loadCourseBadges());
+
 export default store;
+

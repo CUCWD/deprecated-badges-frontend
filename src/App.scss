@@ -1,2 +1,10 @@
 @import "~@edx/edx-bootstrap/sass/edx/theme";
 @import "~bootstrap/scss/bootstrap";
+
+/* Remove bullets in the primary navigation due to SFE.scss */
+.nav {
+  .nav-item {
+    list-style-type: none;
+  }
+}
+
