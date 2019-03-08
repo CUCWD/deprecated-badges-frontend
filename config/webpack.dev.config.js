@@ -5,7 +5,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
+const apiEndpoints = require('../src/data/api/endpoints.js');
 const commonConfig = require('./webpack.common.config.js');
+
+const targetUrl = 'http://edx.devstack.studio:18010';
 
 module.exports = Merge.smart(commonConfig, {
   mode: 'development',
@@ -42,6 +45,25 @@ module.exports = Merge.smart(commonConfig, {
             loader: 'css-loader', // translates CSS into CommonJS
             options: {
               sourceMap: true,
+              modules: true,
+              localIdentName: '[local]',
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              ident: 'postcss',
+              plugins: () => [
+                /* eslint-disable global-require */
+                require('autoprefixer'),
+                require('../src/utils/matches-prefixer.js'),
+                require('postcss-pseudo-class-any-link'),
+                require('postcss-initial')(),
+                require('postcss-prepend-selector')({ selector: '#root.SFE ' }),
+                /* eslint-enable global-require */
+              ],
             },
           },
           {
@@ -73,6 +95,12 @@ module.exports = Merge.smart(commonConfig, {
       inject: true, // Appends script tags linking to the webpack bundles at the end of the body
       template: path.resolve(__dirname, '../public/index.html'),
     }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      chunks: ['recipientBadgeLearningPath'],
+      filename: 'recipientBadgeLearningPath.html',
+      template: path.resolve(__dirname, '../public/index.html'),
+    }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
       BASE_URL: 'localhost:1991',
@@ -94,8 +122,19 @@ module.exports = Merge.smart(commonConfig, {
   devServer: {
     host: '0.0.0.0',
     port: 1991,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     historyApiFallback: true,
     hot: true,
     inline: true,
+    overlay: true,
+    proxy: Object.keys(apiEndpoints).reduce(
+      (map, endpoint) => {
+        map[apiEndpoints[endpoint]] = { // eslint-disable-line no-param-reassign
+          target: targetUrl,
+        };
+        return map;
+      }, {}),
   },
 });
