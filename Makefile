@@ -17,7 +17,7 @@ down: ## stop and remove cookie-cutter container
 	docker-compose down
 
 npm-install-%: ## install specified % npm package on the cookie-cutter container
-	docker exec npm install $* --save-dev
+	docker exec -it badges-frontend npm install $* --save-dev
 	git add package.json
 
 restart:
