@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 
+import BadgeDownload from './BadgeDownload'
+
 import {
 //   Button,
 //   InputSelect,
@@ -28,9 +30,7 @@ const ProgressCardListItem = ({badge}) => {
         <td>{badge.badgeClass.description}</td>
         <td>{badge.badgeClass.criteria}</td>
         <td>
-          <a href={badge.assertionUrl} target="_blank">
-            <h4>SHARE</h4>
-          </a>
+          <BadgeDownload url={badge.imageUrl} />
         </td>
       </tr>
   );
@@ -41,10 +41,3 @@ ProgressCardListItem.propTypes = {
 };
 
 export default ProgressCardListItem;
-
-// if (awardBadge) {
-//   <BadgeAssertion/>
-// }
-// else {
-//   <BadgeClass/>
-// }
