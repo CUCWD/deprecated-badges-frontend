@@ -1,3 +1,5 @@
+'use strict';
+
 // This is the dev Webpack config. All settings here should prefer a fast build
 // time at the expense of creating larger, unoptimized bundles.
 const Merge = require('webpack-merge');
@@ -12,11 +14,11 @@ const targetUrl = 'http://edx.devstack.studio:18010';
 
 module.exports = Merge.smart(commonConfig, {
   mode: 'development',
-  entry: [
-    // enable react's custom hot dev client so we get errors reported in the browser
-    require.resolve('react-dev-utils/webpackHotDevClient'),
-    path.resolve(__dirname, '../src/index.jsx'),
-  ],
+  // entry: [
+  //   // enable react's custom hot dev client so we get errors reported in the browser
+  //   require.resolve('react-dev-utils/webpackHotDevClient'),
+  //   // path.resolve(__dirname, '../src/index.jsx'),
+  // ],
   module: {
     // Specify file-by-file rules to Webpack. Some file-types need a particular kind of loader.
     rules: [
@@ -97,8 +99,8 @@ module.exports = Merge.smart(commonConfig, {
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      chunks: ['recipientBadgeLearningPath'],
-      filename: 'recipientBadgeLearningPath.html',
+      chunks: ['progress'],
+      filename: 'progress.html',
       template: path.resolve(__dirname, '../public/index.html'),
     }),
     new webpack.EnvironmentPlugin({

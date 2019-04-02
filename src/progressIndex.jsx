@@ -13,38 +13,40 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import { Route, Switch, Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { IntlProvider } from 'react-intl';
+import { addLocaleData, IntlProvider } from 'react-intl';
+import enLocaleData from 'react-intl/locale-data/en';
 // import { ConnectedRouter } from 'connected-react-router';
 // import { PrivateRoute } from '@edx/frontend-auth';
 
-import PostsPage from './containers/PostsPage';
-import CommentSearchPage from './containers/CommentSearchPage';
-import DisclosurePage from './containers/DisclosurePage';
+import ProgressPage from './components/progress/ProgressPage';
+
 import history from './data/history';
 import store from './data/store/configureStore';
-import loadI18nDomData from './utils/i18n/loadI18nDomData';
 // import apiClient from './data/apiClient';
 
 import './App.scss';
 import './SFE.scss';
 /* eslint-enable import/first */
 
-const i18nData = loadI18nDomData();
+/* This page is deliberately *not* making use of src/utils/i18n/loadI18nDomData.jsx
+ *
+ * For legal purposes, we want to translate the entire page as a whole using some
+ * yet-to-be-determined mechanism.
+*/
+const locale = 'en';
+const messages = {};
+addLocaleData(enLocaleData);
 
-const App = () => (
-  <IntlProvider locale={i18nData.locale} messages={i18nData.messages}>
+const ProgressApp = () => (
+  <IntlProvider locale={locale} messages={messages}>
       <Provider store={store}>
-          <div className="SFE-wrapper">
-              <h2>Badges Home</h2>
-              <p>
-                  The badges microfrontend (MFE) provides access to course badge progress. Additional changes will include
-                  leaderboard updates to compare existing learner against other learners of the course.
-              </p>
-          </div>
+        <div className="SFE-wrapper">
+          <ProgressPage/>
+        </div>
       </Provider>
   </IntlProvider>
 );
 
 // if (apiClient.ensurePublicOrAuthencationAndCookies(window.location.pathname)) {
-  ReactDOM.render(<App />, document.getElementById('root'));
+  ReactDOM.render(<ProgressApp />, document.getElementById('root'));
 // }
