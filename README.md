@@ -4,6 +4,16 @@
 
 Please tag **@edx/fedx-team** on any PRs or issues.
 
+## Development
+
+Webpack will serve pages in development mode at http://localhost:18011.
+
+The following pages are served in the development:
+
+| Page                 | URL                                              |
+|----------------------|--------------------------------------------------|
+| Progress             | http://localhost:1991/progress.html              |
+
 ## Introduction
 
 The purpose of this repository is to illustrate general front-end best practices for [`React`](https://reactjs.org/) 
