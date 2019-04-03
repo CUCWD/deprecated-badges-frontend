@@ -1,24 +1,24 @@
 {
   "504": {
-    "message": "Studio is not running",
+    "message": "LMS is not running",
     "alertLevel": "danger",
     "link": null
   },
   "500": {
-    "message": "Server error from Studio",
+    "message": "Server error from LMS",
     "alertLevel": "danger",
     "link": null
   },
   "404": {
-    "message": "You are not logged in to Studio.",
+    "message": "You are not logged in to LMS.",
     "alertLevel": "warning",
     "link": {
-      "url": "http://localhost:18010/signin",
+      "url": "http://courses.edx.devstack.lms:18000/signin",
       "text": "Log in."
     }
   },
   "403": {
-    "message": "You are logged in to Studio, but your account doesn't have the correct permissions",
+    "message": "You are logged in to LMS, but your account doesn't have the correct permissions",
     "alertLevel": "warning",
     "link": null
   }

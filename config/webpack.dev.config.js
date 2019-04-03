@@ -10,7 +10,7 @@ const webpack = require('webpack');
 const apiEndpoints = require('../src/data/api/endpoints.js');
 const commonConfig = require('./webpack.common.config.js');
 
-const targetUrl = 'http://edx.devstack.studio:18010';
+const targetUrl = 'http://courses.edx.devstack.lms:18000';
 
 module.exports = Merge.smart(commonConfig, {
   mode: 'development',

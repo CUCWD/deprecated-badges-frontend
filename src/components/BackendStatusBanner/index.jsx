@@ -6,7 +6,7 @@ import { Button } from '@edx/paragon';
 
 import styles from './BackendStatusBanner.scss';
 import statusMap from './statusMap.json';
-import { pingStudio } from '../../data/actions/pingStudio';
+import { pingLms } from '../../data/actions/pingLms';
 
 class BackendStatusBanner extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class BackendStatusBanner extends React.Component {
   }
 
   componentDidMount() {
-    this.props.pingStudio();
+    this.props.pingLms();
   }
 
   renderStatusMessage() {
@@ -50,7 +50,7 @@ class BackendStatusBanner extends React.Component {
             label="↻"
             buttonType="sm"
             className={[styles['btn-outline-primary']]}
-            onClick={this.props.pingStudio}
+            onClick={this.props.pingLms}
           />
           {' '}
           {this.renderStatusMessage()}
@@ -61,7 +61,7 @@ class BackendStatusBanner extends React.Component {
 
 BackendStatusBanner.propTypes = {
   connectionStatus: PropTypes.number,
-  pingStudio: PropTypes.func.isRequired,
+  pingLms: PropTypes.func.isRequired,
 };
 
 BackendStatusBanner.defaultProps = {
@@ -72,7 +72,7 @@ const WrappedBackendStatusBanner = connect(
   state => ({
     connectionStatus: state.connectionStatus,
   }), dispatch => ({
-    pingStudio: () => dispatch(pingStudio()),
+    pingLms: () => dispatch(pingLms()),
   }),
 )(BackendStatusBanner);
 

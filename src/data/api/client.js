@@ -5,9 +5,9 @@ import 'whatwg-fetch'; // fetch polyfill
 import endpoints from './endpoints';
 import { getDatabaseAttributesFromAssetAttributes } from '../../utils/getAssetsAttributes';
 
-export function pingStudioHome() {
+export function pingLmsDashboard() {
   return fetch(
-    endpoints.home, {
+    endpoints.dashboard, {
       credentials: 'same-origin',
       headers: {
         Accept: 'application/json',
