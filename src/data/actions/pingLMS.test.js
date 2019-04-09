@@ -9,7 +9,7 @@ import { PING_RESPONSE, pingResponse, pingLms } from './pingLms';
 
 const initialState = {};
 
-const lmsEndpoint = endpoints.dashboard;
+const lmsEndpoint = endpoints.heartbeat;
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 let store;

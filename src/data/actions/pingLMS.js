@@ -1,4 +1,4 @@
-import { pingLmsDashboard } from '../api/client';
+import { pingLmsHeartbeat } from '../api/client';
 
 export const PING_RESPONSE = 'PING_RESPONSE';
 
@@ -9,5 +9,5 @@ export const pingResponse = response => ({
 
 export const pingLms = () =>
   dispatch =>
-    pingLmsDashboard()
+    pingLmsHeartbeat()
       .then(response => dispatch(pingResponse(response)));
