@@ -7,6 +7,9 @@ import progress from './progress';
 import connectionStatus from './connectionStatus';
 import { badgeActions } from '../constants/actionTypes/progress';
 
+/* eslint-disable no-undef */
+const lmsDetails = () => lmsContext;
+
 const identityReducer = (state) => {
   const newState = { ...state };
   return newState;
@@ -21,4 +24,5 @@ export default (history) => combineReducers({
   comment,
   progress,
   connectionStatus,
+  lmsDetails,
 });

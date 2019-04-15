@@ -1,4 +1,4 @@
-import { PING_RESPONSE } from '../actions/pingStudio';
+import { PING_RESPONSE } from '../actions/connectionStatus';
 
 const connectionStatus = (state = null, action) => {
   switch (action.type) {

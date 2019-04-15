@@ -26,7 +26,6 @@ import loadI18nDomData from './utils/i18n/loadI18nDomData';
 // import apiClient from './data/apiClient';
 
 import './App.scss';
-import './SFE.scss';
 /* eslint-enable import/first */
 
 const i18nData = loadI18nDomData();

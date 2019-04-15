@@ -1,6 +1,17 @@
 @import "~@edx/edx-bootstrap/sass/edx/theme";
 @import "~bootstrap/scss/bootstrap";
 
+$fa-font-path: "font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
+@import './SFE.scss';
+
+@import "./components/BackendStatusBanner/style";
+@import "./components/Progress/style";
+@import "./components/ProgressBanner/style";
+@import "./components/ProgressCardListItem/style";
+@import "./components/BadgeDownload/style";
+
 /* Remove bullets in the primary navigation due to SFE.scss */
 .nav {
   .nav-item {

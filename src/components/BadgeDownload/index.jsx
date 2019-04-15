@@ -5,8 +5,6 @@ import axios from 'axios';
 import DownloadLink from 'react-download-link';
 import * as mime from 'mime-types';
 
-import styles from './BadgeDownload.scss';
-
 
 class BadgeDownload extends React.Component {
   constructor(props, context) {

@@ -4,24 +4,24 @@ import configureStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 
-import endpoints from '../api/endpoints';
-import { PING_RESPONSE, pingResponse, pingStudio } from './pingStudio';
+import endpoints from '../services/endpoints';
+import { PING_RESPONSE, pingResponse, pingLms } from './connectionStatus';
 
 const initialState = {};
 
-const studioEndpoint = endpoints.home;
+const lmsEndpoint = endpoints.heartbeat;
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 let store;
 
-describe('Ping Studio Action Creators', () => {
+describe('Ping LMS Action Creators', () => {
   const response = {
     status: 200,
   };
 
   beforeEach(() => {
     store = mockStore(initialState);
-    fetchMock.once(`begin:${studioEndpoint}`, response);
+    fetchMock.once(`begin:${lmsEndpoint}`, response);
   });
 
   afterEach(() => {
@@ -33,12 +33,12 @@ describe('Ping Studio Action Creators', () => {
     const expectedAction = { type: PING_RESPONSE, status: response.status };
     expect(store.dispatch(pingResponse(response))).toEqual(expectedAction);
   });
-  it('returns expected state from pingStudio success', () => {
+  it('returns expected state from pingLms success', () => {
     const expectedActions = [
       { type: PING_RESPONSE, status: response.status },
     ];
 
-    return store.dispatch(pingStudio()).then(() => {
+    return store.dispatch(pingLms()).then(() => {
       // return of async actions
       expect(store.getActions()).toEqual(expectedActions);
     });

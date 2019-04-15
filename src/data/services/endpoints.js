@@ -5,4 +5,7 @@ module.exports = {
   courseBestPractices: '/api/courses/v1/quality',
   home: '/home',
   zendesk: '/zendesk_proxy/v0',
+  dashboard: '/dashboard',
+  heartbeat: '/heartbeat',
+  userBadgeProgress: '/api/badges/v1/progress'
 };
