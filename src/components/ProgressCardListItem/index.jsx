@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 
-import BadgeDownload from './BadgeDownload'
+// import BadgeDownload from '../progress_bak/BadgeDownload'
+import BadgeDownload from '../BadgeDownload';
 
 import {
 //   Button,
@@ -14,23 +15,25 @@ import {
 //   Icon,
 } from '@edx/paragon';
 
-import styles from './ProgressCardListItem.scss';
 
 const ProgressCardListItem = ({badge}) => {
+  // debugger;
   return (
       <tr className="progress-card-list-item">
         <td className="badge-name">
           <span>
-            <a href={badge.assertionUrl} target="_blank">
-              <img src={badge.imageUrl} alt={badge.display_name} align="left" />
-              <h3>{badge.badgeClass.display_name}</h3>
+            <a href={badge.assertion.assertionUrl} target="_blank">
+              <img src={badge.badge_class.image} alt={badge.badge_class.display_name} align="left" />
+              <h3>{badge.badge_class.display_name}</h3>
             </a>
           </span>
         </td>
-        <td>{badge.badgeClass.description}</td>
-        <td>{badge.badgeClass.criteria}</td>
+        <td>{badge.badge_class.description}</td>
+        <td>{badge.badge_class.criteria}</td>
         <td>
-          <BadgeDownload url={badge.imageUrl} />
+          { badge.assertion.image_url.length > 0 && (
+            <BadgeDownload url={badge.assertion.image_url} />
+          )}
         </td>
       </tr>
   );

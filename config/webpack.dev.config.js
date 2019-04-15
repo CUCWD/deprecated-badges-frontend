@@ -7,7 +7,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
-const apiEndpoints = require('../src/data/api/endpoints.js');
+const apiEndpoints = require('../src/data/services/endpoints.js');
 const commonConfig = require('./webpack.common.config.js');
 
 const targetUrl = 'http://courses.edx.devstack.lms:18000';
@@ -105,6 +105,7 @@ module.exports = Merge.smart(commonConfig, {
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
+      MOCK_LMS_API: true,
       BASE_URL: 'localhost:1991',
       LMS_BASE_URL: 'http://localhost:18000',
       LOGIN_URL: 'http://localhost:18000/login',

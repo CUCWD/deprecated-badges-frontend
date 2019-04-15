@@ -8,7 +8,7 @@ import history from '../history';
 import createRootReducer from '../reducers';
 import apiClient from '../apiClient';
 
-import { loadCourseBadges } from '../actions/progress';
+// import { fetchCourseBadgesProgress } from '../actions/progress';
 
 const initialState = apiClient.getAuthenticationState();
 const loggerMiddleware = createLogger();
@@ -24,7 +24,7 @@ const store = createStore(
   )),
 );
 
-store.dispatch(loadCourseBadges());
+// store.dispatch(fetchCourseBadgesProgress());
 
 export default store;
 

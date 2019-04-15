@@ -18,14 +18,14 @@ import enLocaleData from 'react-intl/locale-data/en';
 // import { ConnectedRouter } from 'connected-react-router';
 // import { PrivateRoute } from '@edx/frontend-auth';
 
-import ProgressPage from './components/progress/ProgressPage';
+import ProgressPage from './containers/ProgressPage';
 
 import history from './data/history';
 import store from './data/store/configureStore';
 // import apiClient from './data/apiClient';
 
 import './App.scss';
-import './SFE.scss';
+
 /* eslint-enable import/first */
 
 /* This page is deliberately *not* making use of src/utils/i18n/loadI18nDomData.jsx

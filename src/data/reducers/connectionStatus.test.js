@@ -1,5 +1,5 @@
 import connectionStatus from './connectionStatus';
-import { PING_RESPONSE } from '../actions/pingLms';
+import { PING_RESPONSE } from '../actions/connectionStatus';
 
 const defaultState = {};
 

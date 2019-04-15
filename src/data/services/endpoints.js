@@ -6,5 +6,6 @@ module.exports = {
   home: '/home',
   zendesk: '/zendesk_proxy/v0',
   dashboard: '/dashboard',
-  heartbeat: '/heartbeat'
+  heartbeat: '/heartbeat',
+  userBadgeProgress: '/api/badges/v1/progress'
 };

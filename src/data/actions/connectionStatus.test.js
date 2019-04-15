@@ -4,8 +4,8 @@ import configureStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 
-import endpoints from '../api/endpoints';
-import { PING_RESPONSE, pingResponse, pingLms } from './pingLms';
+import endpoints from '../services/endpoints';
+import { PING_RESPONSE, pingResponse, pingLms } from './connectionStatus';
 
 const initialState = {};
 
