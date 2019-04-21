@@ -105,7 +105,7 @@ module.exports = Merge.smart(commonConfig, {
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
-      MOCK_LMS_API: true,
+      MOCK_LMS_API: false,
       BASE_URL: 'localhost:1991',
       LMS_BASE_URL: 'http://localhost:18000',
       LOGIN_URL: 'http://localhost:18000/login',
