@@ -20,13 +20,14 @@ const ProgressCardListItem = ({badge}) => {
   // debugger;
   return (
       <tr className="progress-card-list-item">
+        <td>{badge.block_display_name}</td>
         <td className="badge-name">
-          <span>
+          <div>
             <a href={badge.assertion.assertionUrl} target="_blank">
               <img src={badge.badge_class.image} alt={badge.badge_class.display_name} align="left" />
-              <h3>{badge.badge_class.display_name}</h3>
+              <span>{badge.badge_class.display_name}</span>
             </a>
-          </span>
+          </div>
         </td>
         <td>{badge.badge_class.description}</td>
         <td>{badge.badge_class.criteria}</td>

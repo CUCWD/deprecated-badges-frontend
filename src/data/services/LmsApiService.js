@@ -90,6 +90,8 @@ const apiPayload = {
         {
           course_id: "course-v1:edX+DemoX+Demo_Course",
           block_id: "block-v1:edX+DemoX+Demo_Course+type@chapter+block@d8a6192ade314473a78242dfeedfbf5a",
+          block_display_name: "Example Week 1: Getting Started",
+          block_order: 1,
           event_type: "",
           badge_class: {
             slug: "NpxN12UORXy_WRxOGMnA7w",
@@ -108,6 +110,8 @@ const apiPayload = {
         {
           course_id: "course-v1:edX+DemoX+Demo_Course",
           block_id: "block-v1:edX+DemoX+Demo_Course+type@chapter+block@d8a6192ade314473a78242dfeedfbf5b",
+          block_display_name: "Example Week 2: Get Interactive",
+          block_order: 2,
           event_type: "",
           badge_class: {
             slug: "7li80Ov_RRqK9RFviudMhw",
@@ -126,6 +130,8 @@ const apiPayload = {
         {
           course_id: "course-v1:edX+DemoX+Demo_Course",
           block_id: "block-v1:edX+DemoX+Demo_Course+type@chapter+block@d8a6192ade314473a78242dfeedfbf5c",
+          block_display_name: "Example Week 3: Be Social",
+          block_order: 3,
           event_type: "",
           badge_class: {
             slug: "special_award",

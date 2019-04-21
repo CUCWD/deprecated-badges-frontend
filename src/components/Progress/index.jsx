@@ -81,6 +81,8 @@ Progress.propTypes = {
       slug: PropTypes.string,
     }),
     block_id: PropTypes.string,
+    block_display_name: PropTypes.string,
+    block_order: PropTypes.number,
     course_id: PropTypes.string,
     event_type: PropTypes.string,
   })),
