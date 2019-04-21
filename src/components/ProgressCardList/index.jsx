@@ -18,6 +18,14 @@ function debug(args) {
   return true;
 }
 
+const sortProgressByCourseBlockOrder = (progress) => {
+  return progress.sort(function(a, b) {
+    if (a.block_order < b.block_order) { return -1; }
+    if (a.block_order > b.block_order) { return 1; }
+    return 0;
+  });
+}
+
 const ProgressCardList = ({progress}) => {
   // debugger;
 
@@ -30,6 +38,7 @@ const ProgressCardList = ({progress}) => {
         <table className="table">
           <thead>
           <tr>
+            <th>Module</th>
             <th>Badge</th>
             <th>Description</th>
             <th>Criteria</th>
@@ -37,7 +46,7 @@ const ProgressCardList = ({progress}) => {
           </tr>
           </thead>
           <tbody>
-          {progress.map(badge =>
+          {sortProgressByCourseBlockOrder(progress).map(badge =>
             <ProgressCardListItem key={badge.block_id} badge={badge}/>
           )}
           </tbody>
