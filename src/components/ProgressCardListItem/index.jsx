@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 // import BadgeDownload from '../progress_bak/BadgeDownload'
 import BadgeDownload from '../BadgeDownload';
@@ -18,8 +19,10 @@ import {
 
 const ProgressCardListItem = ({badge}) => {
   // debugger;
+  const classAsserted = ( badge.assertion.image_url.length > 0 ? "asserted" : "not-asserted" );
+
   return (
-      <tr className="progress-card-list-item">
+      <tr className={classNames('progress-card-list-item', classAsserted)}>
         <td>{badge.block_display_name}</td>
         <td className="badge-name">
           <div>
