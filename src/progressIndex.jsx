@@ -40,12 +40,17 @@ addLocaleData(enLocaleData);
 const ProgressApp = () => (
   <IntlProvider locale={locale} messages={messages}>
       <Provider store={store}>
-        <div className="SFE-wrapper">
+        <main className="container mb-4 BFE-wrapper">
           <ProgressPage/>
-        </div>
+        </main>
       </Provider>
   </IntlProvider>
 );
+/*
+<div className="BFE-wrapper">
+  <ProgressPage/>
+</div>
+*/
 
 // if (apiClient.ensurePublicOrAuthencationAndCookies(window.location.pathname)) {
   ReactDOM.render(<ProgressApp />, document.getElementById('root'));

@@ -63,7 +63,7 @@ module.exports = Merge.smart(commonConfig, {
                 require('../src/utils/matches-prefixer.js'),
                 require('postcss-pseudo-class-any-link'),
                 require('postcss-initial')(),
-                require('postcss-prepend-selector')({ selector: '#root.SFE ' }),
+                require('postcss-prepend-selector')({ selector: '#root.BFE ' }),
                 /* eslint-enable global-require */
               ],
             },

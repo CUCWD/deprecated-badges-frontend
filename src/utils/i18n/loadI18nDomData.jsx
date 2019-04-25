@@ -5,7 +5,7 @@ import localeDataMap from '../../data/i18n/locales/currentlySupportedLangs';
 
 const loadI18nDomData = () => {
   try {
-    const domDefinedData = JSON.parse(document.getElementById('SFE_i18n_data').innerHTML);
+    const domDefinedData = JSON.parse(document.getElementById('BFE_i18n_data').innerHTML);
     const localeData = localeDataMap[domDefinedData.locale];
     addLocaleData(localeData);
     return domDefinedData;

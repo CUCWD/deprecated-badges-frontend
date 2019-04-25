@@ -130,7 +130,7 @@ const apiPayload = {
         {
           course_id: "course-v1:edX+DemoX+Demo_Course",
           block_id: "block-v1:edX+DemoX+Demo_Course+type@chapter+block@d8a6192ade314473a78242dfeedfbf5c",
-          block_display_name: "Example Week 3: Be Social",
+          block_display_name: "Example Week 3: Be Social Example Week 3: Be Social Example Week 3: Be Social Example Week 3: Be Social",
           block_order: 3,
           event_type: "",
           badge_class: {
@@ -146,6 +146,40 @@ const apiPayload = {
             image_url: "http://badges.example.com/media/issued/cd75b69fc1c979fcc1697c8403da2bdf.png",
             assertion_url: "http://badges.example.com/public/assertions/07020647-e772-44dd-98b7-d13d34335ca6"
           }
+        },
+        {
+          course_id: "course-v1:edX+DemoX+Demo_Course",
+          block_id: "block-v1:edX+DemoX+Demo_Course+type@chapter+block@1414ffd5143b4b508f739b563ab468b7",
+          block_display_name: "About Exams and Certificates",
+          block_order: 3,
+          event_type: "",
+          badge_class: {
+            slug: "special_award",
+            issuing_component: "openedx__course",
+            display_name: "Very Special Award",
+            course_id: "course-v1:edX+DemoX+Demo_Course",
+            description: "Awarded for people who did something incredibly special",
+            criteria: "Do something incredibly special.",
+            image: "http://example.com/media/badge_classes/badges/special_xdpqpBv_9FYOZwN.png"
+          },
+          assertion: {}
+        },
+        {
+          course_id: "course-v1:edX+DemoX+Demo_Course",
+          block_id: "block-v1:edX+DemoX+Demo_Course+type@chapter+block@9fca584977d04885bc911ea76a9ef29e",
+          block_display_name: "holding section",
+          block_order: 3,
+          event_type: "",
+          badge_class: {
+            slug: "special_award",
+            issuing_component: "openedx__course",
+            display_name: "Very Special Award",
+            course_id: "course-v1:edX+DemoX+Demo_Course",
+            description: "Awarded for people who did something incredibly special",
+            criteria: "Do something incredibly special.",
+            image: "http://example.com/media/badge_classes/badges/special_xdpqpBv_9FYOZwN.png"
+          },
+          assertion: {}
         }
     ],
   }
