@@ -11,7 +11,8 @@ import {
 } from '@edx/paragon';
 import BackendStatusBanner from '../BackendStatusBanner';
 import ProgressBanner from '../ProgressBanner';
-import ProgressCardList from '../ProgressCardList';
+import ProgressList from '../ProgressList';
+import ProgressCard from "../ProgressCard";
 
 
 export default class Progress extends React.Component {
@@ -27,31 +28,89 @@ export default class Progress extends React.Component {
     );
   }
 
+  getBadgeProgress(courseStatus) {
+    const { progress } = this.props;
+    if (progress) {
+      return progress;
+    }
+    return [];
+  }
+
+  hasBadgeProgress() {
+    const progress = this.getBadgeProgress();
+    return progress && progress.length > 0;
+  }
+
+  renderBadgeProgress() {
+    const progress = this.getBadgeProgress();
+
+    // Todo: Need to add instructor scope to render out ProgressList.
+    const hasInstructorRights = true;  // ( this.props.userDetails.role == 'staff' ? true : false )
+    if (hasInstructorRights) {
+      return (
+        <ProgressList progress={progress}/>
+      );
+    }
+
+    return progress.map(learnerProgress => (
+      <ProgressCard key={learnerProgress.block_id} data={learnerProgress}/>
+    ));
+  }
+  // <div className="col-sm-12 col-md-4 col-lg-3 mb-3">
+
+  renderNoBadgeProgress() {
+    return (
+      <StatusAlert
+        dialog={
+          <React.Fragment>
+            <Icon className={['fa', 'fa-exclamation-circle', 'mr-2']} />
+            There is no course badge progress to show.
+          </React.Fragment>
+        }
+        dismissible={false}
+        open
+      />
+    );
+  }
+
+
   render() {
     const {progress} = this.props;
 
-    // debugger;
-
     return (
-      <div className="d-flex justify-content-center">
-        <div className="progress-container">
-          <BackendStatusBanner />
-          <ProgressBanner has_progress={(progress.length ? true : false)}/>
-
-          { this.props.showSpinner && (
-              <div className="spinner-overlay">
-                <Icon className={['fa', 'fa-spinner', 'fa-spin', 'fa-5x', 'color-black']} />
-              </div>
+      <div className="card-deck col-sm-12 col-md-12 col-lg-12 mb-3">
+          {this.hasBadgeProgress() && (
+             this.renderBadgeProgress()
           )}
-
-          { progress.length > 0 && (
-            <ProgressCardList progress={progress} />
-          )}
-
-        </div>
+          {!this.hasBadgeProgress() && this.renderNoBadgeProgress()}
       </div>
     );
   }
+
+// <div className="row">
+// <div className="col-sm-12 col-md-12 col-lg-12">
+// <div className="row equal-col-height">
+
+
+// <div className="d-flex justify-content-center">
+// <div className="progress-container">
+// <BackendStatusBanner />
+// <ProgressBanner has_progress={(progress.length ? true : false)}/>
+//
+// { this.props.showSpinner && (
+//   <div className="spinner-overlay">
+//     <Icon className={['fa', 'fa-spinner', 'fa-spin', 'fa-5x', 'color-black']} />
+//   </div>
+// )}
+//
+// { progress.length > 0 && (
+//   <ProgressList progress={progress} />
+// )}
+//
+
+//
+// </div>
+// </div>
 
 }
 //

@@ -4,15 +4,18 @@
 $fa-font-path: "font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 
-@import './SFE.scss';
+@import './mixins.scss';
+@import './BFE.scss';
 
 @import "./components/BackendStatusBanner/style";
 @import "./components/Progress/style";
 @import "./components/ProgressBanner/style";
-@import "./components/ProgressCardListItem/style";
+@import "./components/ProgressCard/style";
+@import "./components/ProgressCardStatus/style";
+@import "./components/ProgressListItem/style";
 @import "./components/BadgeDownload/style";
 
-/* Remove bullets in the primary navigation due to SFE.scss */
+/* Remove bullets in the primary navigation due to BFE.scss */
 .nav {
   .nav-item {
     list-style-type: none;

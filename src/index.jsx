@@ -33,7 +33,7 @@ const i18nData = loadI18nDomData();
 const App = () => (
   <IntlProvider locale={i18nData.locale} messages={i18nData.messages}>
       <Provider store={store}>
-          <div className="SFE-wrapper">
+          <div className="BFE-wrapper">
               <h2>Badges Home</h2>
               <p>
                   The badges microfrontend (MFE) provides access to course badge progress. Additional changes will include

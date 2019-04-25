@@ -1,7 +1,7 @@
 @import 'utils/scss/focus';
 
 /* Note: Because postcss-prepend-selector is used in this project, all selectors defined in any CSS/SCSS file will have
- * "#root.SFE " prepended to them so that all styles here will be scoped to *only* the root div. */
+ * "#root.BFE " prepended to them so that all styles here will be scoped to *only* the root div. */
 
 /* reset all element properties to initial values as defined in CSS spec (*not* browser defaults) */
 * {
@@ -13,7 +13,7 @@
   line-height: inherit;
   color: inherit;
   text-align: inherit;
-  background-color: inherit;
+  background-color: transparent;
   cursor: inherit;
 }
 
@@ -27,10 +27,10 @@
  * then, apply the Bootstrap component styling */
 @import '~bootstrap/scss/bootstrap';
 
-/* Since elements inside the SFE div can no longer inherit styles set on the <body>, we will apply the styles that
+/* Since elements inside the BFE div can no longer inherit styles set on the <body>, we will apply the styles that
  * the Bootstrap reboot applies to the <body> on the wrapper div instead, which containing elements can inherit.
  */
-.SFE-wrapper {
+.BFE-wrapper {
   font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-base;

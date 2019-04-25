@@ -17,12 +17,11 @@ import {
 } from '@edx/paragon';
 
 
-const ProgressCardListItem = ({badge}) => {
-  // debugger;
+const ProgressListItem = ({badge}) => {
   const classAsserted = ( badge.assertion.image_url.length > 0 ? "asserted" : "not-asserted" );
 
   return (
-      <tr className={classNames('progress-card-list-item', classAsserted)}>
+      <tr className={classNames('progress-list-item', classAsserted)}>
         <td>{badge.block_display_name}</td>
         <td className="badge-name">
           <div>
@@ -43,8 +42,8 @@ const ProgressCardListItem = ({badge}) => {
   );
 };
 
-ProgressCardListItem.propTypes = {
+ProgressListItem.propTypes = {
   badge: PropTypes.object.isRequired
 };
 
-export default ProgressCardListItem;
+export default ProgressListItem;
