@@ -45,22 +45,29 @@ export default class Progress extends React.Component {
     const progress = this.getBadgeProgress();
 
     // Todo: Need to add instructor scope to render out ProgressList.
-    const hasInstructorRights = true;  // ( this.props.userDetails.role == 'staff' ? true : false )
+    const hasInstructorRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )
     if (hasInstructorRights) {
       return (
         <ProgressList progress={progress}/>
       );
     }
 
+    debugger;
     return (
-      <div className="card-deck col-sm-12 col-md-12 col-lg-12 mb-3">
+      <div className="row">
+        <div className="col-sm-12 col-md-12 col-lg-12">
         {progress && (
-          progress.map(learnerProgress => (
-            <ProgressCard key={learnerProgress.block_id} data={learnerProgress}/>
-        )))}
+          <div className="row equal-col-height">
+            {progress.map(learnerProgress => (
+              <ProgressCard key={learnerProgress.block_id} data={learnerProgress}/>
+            ))}
+          </div>
+        )}
+        </div>
       </div>
     );
   }
+  // <div className="card-deck col-sm-12 col-md-12 col-lg-12 mb-3">
   // <div className="col-sm-12 col-md-4 col-lg-3 mb-3">
 
   renderNoBadgeProgress() {
@@ -83,15 +90,16 @@ export default class Progress extends React.Component {
     const {progress} = this.props;
 
     return (
-      <div className="progress-container">
+      <React.Fragment>
         {this.hasBadgeProgress() && (
            this.renderBadgeProgress()
         )}
         {!this.hasBadgeProgress() && this.renderNoBadgeProgress()}
-      </div>
+      </React.Fragment>
     );
   }
 
+//       <div className="progress-container">
 // <div className="row">
 // <div className="col-sm-12 col-md-12 col-lg-12">
 // <div className="row equal-col-height">

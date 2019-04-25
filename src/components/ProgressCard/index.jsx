@@ -42,16 +42,18 @@ const ProgressCard = (props) => {
   // };
 
   return (
-    <div className="card col-sm-12 col-md-4 col-lg-3 mb-3 shadow-sm">
-      <div className="card-header">
-        <ProgressCardStatus status={isProgressComplete()} title={data.block_display_name}/>
+    <div className="col-sm-12 col-md-4 col-lg-3 mb-3">
+      <div className="card mb-3">
+        <div className="card-header">
+          <ProgressCardStatus status={isProgressComplete()} title={data.block_display_name}/>
+        </div>
+        <div className="card-body">
+          <p className="card-subtitle mb-2 text-muted">Test</p>
+        </div>
+        {/*<div className="card-footer">*/}
+          {/*This is the card footer.*/}
+        {/*</div>*/}
       </div>
-      <div className="card-body">
-        <p className="card-subtitle mb-2 text-muted">Test</p>
-      </div>
-      {/*<div className="card-footer">*/}
-        {/*This is the card footer.*/}
-      {/*</div>*/}
     </div>
   );
 };
