@@ -52,9 +52,14 @@ export default class Progress extends React.Component {
       );
     }
 
-    return progress.map(learnerProgress => (
-      <ProgressCard key={learnerProgress.block_id} data={learnerProgress}/>
-    ));
+    return (
+      <div className="card-deck col-sm-12 col-md-12 col-lg-12 mb-3">
+        {progress && (
+          progress.map(learnerProgress => (
+            <ProgressCard key={learnerProgress.block_id} data={learnerProgress}/>
+        )))}
+      </div>
+    );
   }
   // <div className="col-sm-12 col-md-4 col-lg-3 mb-3">
 
@@ -78,11 +83,11 @@ export default class Progress extends React.Component {
     const {progress} = this.props;
 
     return (
-      <div className="card-deck col-sm-12 col-md-12 col-lg-12 mb-3">
-          {this.hasBadgeProgress() && (
-             this.renderBadgeProgress()
-          )}
-          {!this.hasBadgeProgress() && this.renderNoBadgeProgress()}
+      <div className="progress-container">
+        {this.hasBadgeProgress() && (
+           this.renderBadgeProgress()
+        )}
+        {!this.hasBadgeProgress() && this.renderNoBadgeProgress()}
       </div>
     );
   }
