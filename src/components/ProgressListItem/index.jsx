@@ -25,7 +25,7 @@ const ProgressListItem = ({badge}) => {
         <td>{badge.block_display_name}</td>
         <td className="badge-name">
           <div>
-            <a href={badge.assertion.assertionUrl} target="_blank">
+            <a href={badge.assertion.assertion_url} target="_blank">
               <img src={badge.badge_class.image} alt={badge.badge_class.display_name} align="left" />
               <span>{badge.badge_class.display_name}</span>
             </a>

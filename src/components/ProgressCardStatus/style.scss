@@ -1,5 +1,7 @@
 
 .card-status {
+  position: relative;
+  top: -5px;
 
   .card-status-icon {
     display: inline-block;
@@ -27,9 +29,11 @@
   }
   */
   .card-status-title {
+    font-size: 14px;
+    text-align: left;
     display: inline-block;
     vertical-align: middle;
-    width: 70%;
+    width: 75%;
     margin: 5px 0px;
     //position: relative;
     //left: 44px;

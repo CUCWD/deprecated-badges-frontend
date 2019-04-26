@@ -45,22 +45,34 @@ export default class Progress extends React.Component {
     const progress = this.getBadgeProgress();
 
     // Todo: Need to add instructor scope to render out ProgressList.
-    const hasInstructorRights = true;  // ( this.props.userDetails.role == 'staff' ? true : false )
+    const hasInstructorRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )
     if (hasInstructorRights) {
       return (
-        <ProgressList progress={progress}/>
+        <React.Fragment>
+          <ProgressBanner has_progress={(progress.length ? true : false)} has_rights={hasInstructorRights}/>
+          <ProgressList progress={progress}/>
+        </React.Fragment>
       );
     }
 
     return (
-      <div className="card-deck col-sm-12 col-md-12 col-lg-12 mb-3">
-        {progress && (
-          progress.map(learnerProgress => (
-            <ProgressCard key={learnerProgress.block_id} data={learnerProgress}/>
-        )))}
-      </div>
+      <React.Fragment>
+        <ProgressBanner has_progress={(progress.length ? true : false)} has_rights={hasInstructorRights}/>
+        <div className="row">
+          <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          {progress && (
+            <div className="row equal-col-height">
+              {progress.map(learnerProgress => (
+                <ProgressCard key={learnerProgress.block_id} data={learnerProgress}/>
+              ))}
+            </div>
+          )}
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
+  // <div className="card-deck col-sm-12 col-md-12 col-lg-12 mb-3">
   // <div className="col-sm-12 col-md-4 col-lg-3 mb-3">
 
   renderNoBadgeProgress() {
@@ -83,15 +95,17 @@ export default class Progress extends React.Component {
     const {progress} = this.props;
 
     return (
-      <div className="progress-container">
+      <React.Fragment>
+        <BackendStatusBanner />
         {this.hasBadgeProgress() && (
            this.renderBadgeProgress()
         )}
         {!this.hasBadgeProgress() && this.renderNoBadgeProgress()}
-      </div>
+      </React.Fragment>
     );
   }
 
+//       <div className="progress-container">
 // <div className="row">
 // <div className="col-sm-12 col-md-12 col-lg-12">
 // <div className="row equal-col-height">
@@ -99,8 +113,7 @@ export default class Progress extends React.Component {
 
 // <div className="d-flex justify-content-center">
 // <div className="progress-container">
-// <BackendStatusBanner />
-// <ProgressBanner has_progress={(progress.length ? true : false)}/>
+
 //
 // { this.props.showSpinner && (
 //   <div className="spinner-overlay">
