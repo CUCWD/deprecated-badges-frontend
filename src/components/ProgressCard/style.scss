@@ -2,11 +2,52 @@
 .card {
   border-radius: 1rem;
 
+  .card-header {
+    padding: 0.5rem 0.5rem;
+  }
+
   .card-img-top {
     width: 100%;
     height: 12vw;
-    object-fit: cover;
+    object-fit: contain;
+    margin: 5px 0px;
+
+    @media only screen and (min-width: 320px) {
+      height: 50vw;
+    }
+    @media only screen and (min-width: 768px) {
+      height: 16vw;
+    }
+    @media only screen and (min-width: 1024px) {
+      height: 12vw;
+    }
+    @media only screen and (min-width: 1200px) {
+      height: 10vw;
+    }
+    @media only screen and (min-width: 1400px) {
+      height: 8vw;
+    }
+    @media only screen and (min-width: 2560px) {
+      height: 5vw;
+    }
   }
 
+  .card-body {
+    border-top: 1px solid #8080805c;
+  }
+
+}
+
+.asserted {
+  color: rgba(0,0,0,1);
+}
+
+.not-asserted {
+  //color: rgba(132, 132, 132, 0.15);
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  filter: alpha(opacity=15);
+  opacity: 0.15 !important;
+  //filter: alpha(opacity=15);
 }
 

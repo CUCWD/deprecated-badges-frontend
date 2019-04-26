@@ -52,10 +52,9 @@ export default class Progress extends React.Component {
       );
     }
 
-    debugger;
     return (
       <div className="row">
-        <div className="col-sm-12 col-md-12 col-lg-12">
+        <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
         {progress && (
           <div className="row equal-col-height">
             {progress.map(learnerProgress => (

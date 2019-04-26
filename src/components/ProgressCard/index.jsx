@@ -27,6 +27,23 @@ const ProgressCard = (props) => {
     return data.assertion.image_url.length > 0;
   };
 
+  const getBadgeImage = () => {
+    let _assertionUrl = data.assertion.assertion_url;
+
+    return (
+      <React.Fragment>
+        {_assertionUrl && (
+          <a href={_assertionUrl} target="_blank">
+            <img className="card-img-top asserted" src={data.badge_class.image} alt={data.badge_class.display_name} />
+          </a>
+        )}
+        {!_assertionUrl && (
+          <img className="card-img-top not-asserted" src={data.badge_class.image} alt={data.badge_class.display_name} />
+        )}
+      </React.Fragment>
+    );
+  };
+
   // const getProgressStatus = () => {
   //   if (isProgressComplete()) {
   //     return (
@@ -42,13 +59,14 @@ const ProgressCard = (props) => {
   // };
 
   return (
-    <div className="col-sm-12 col-md-4 col-lg-3 mb-3">
-      <div className="card mb-3">
+    <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2 mb-3">
+      <div className="card text-center mb-3">
         <div className="card-header">
           <ProgressCardStatus status={isProgressComplete()} title={data.block_display_name}/>
         </div>
+        {getBadgeImage()}
         <div className="card-body">
-          <p className="card-subtitle mb-2 text-muted">Test</p>
+          <h5 className="card-title mb-2">{data.badge_class.display_name}</h5>
         </div>
         {/*<div className="card-footer">*/}
           {/*This is the card footer.*/}

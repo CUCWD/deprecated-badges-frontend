@@ -25,7 +25,7 @@ const ProgressCardStatus = (props) => {
   const getStatusTitle = () => {
     return (
       <div className="card-status-title">
-        <TextClamp fontSize={16} maxLines={2} rgbBgColor={'rgba(255,255,255,0)'} textAlign={'left'}>
+        <TextClamp fontSize={14} maxLines={2} rgbBgColor={'rgba(255,255,255,0)'} textAlign={'left'}>
           {props.title}
         </TextClamp>
       </div>
