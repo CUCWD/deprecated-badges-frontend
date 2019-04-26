@@ -61,16 +61,18 @@ const ProgressCard = (props) => {
   return (
     <div className="col-sm-12 col-md-4 col-lg-3 col-xl-2 mb-3">
       <div className="card text-center mb-3">
-        <div className="card-header">
+        <div className="card-header mb-3">
           <ProgressCardStatus status={isProgressComplete()} title={data.block_display_name}/>
         </div>
-        {getBadgeImage()}
-        <div className="card-body">
-          <h5 className="card-title mb-2">{data.badge_class.display_name}</h5>
+        <div className="card-badge">
+          {getBadgeImage()}
+          <div className="card-body">
+            <h5 className="card-title text-muted mb-2">{data.badge_class.display_name}</h5>
+          </div>
+          {/*<div className="card-footer">*/}
+            {/*This is the card footer.*/}
+          {/*</div>*/}
         </div>
-        {/*<div className="card-footer">*/}
-          {/*This is the card footer.*/}
-        {/*</div>*/}
       </div>
     </div>
   );

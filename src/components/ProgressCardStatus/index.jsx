@@ -23,14 +23,14 @@ const ProgressCardStatus = (props) => {
   className="card-title my-0 font-weight-normal"
    */
   const getStatusTitle = () => {
+    let stripNumPrefix = props.title.replace(/[0-9]+\./g, '');
     return (
       <div className="card-status-title">
-        <TextClamp fontSize={14} maxLines={2} rgbBgColor={'rgba(255,255,255,0)'} textAlign={'left'}>
-          {props.title}
-        </TextClamp>
+          {stripNumPrefix}
       </div>
     )
   };
+  // <TextClamp fontSize={14} maxLines={2} rgbBgColor={'rgba(255,255,255,0)'} textAlign={'left'}>
 
   return (
     <div className="card-status p-2">

@@ -1,39 +1,57 @@
 
 .card {
-  border-radius: 1rem;
+  //border-radius: 1rem;
+  border: none;
 
   .card-header {
     padding: 0.5rem 0.5rem;
+    background-color: transparent;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 0 rgba(46,61,73,.2);
+    font-weight: bold;
+    height: 110px;
+    overflow: hidden;
+    line-height: 1.2;
   }
 
-  .card-img-top {
-    width: 100%;
-    height: 12vw;
-    object-fit: contain;
-    margin: 5px 0px;
+  .card-badge {
 
-    @media only screen and (min-width: 320px) {
-      height: 50vw;
-    }
-    @media only screen and (min-width: 768px) {
-      height: 16vw;
-    }
-    @media only screen and (min-width: 1024px) {
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 0 rgba(46,61,73,.2);
+    height: 100%;
+
+    .card-img-top {
+      width: 100%;
       height: 12vw;
-    }
-    @media only screen and (min-width: 1200px) {
-      height: 10vw;
-    }
-    @media only screen and (min-width: 1400px) {
-      height: 8vw;
-    }
-    @media only screen and (min-width: 2560px) {
-      height: 5vw;
-    }
-  }
+      object-fit: contain;
+      margin: 5px 0px;
 
-  .card-body {
-    border-top: 1px solid #8080805c;
+      @media only screen and (min-width: 320px) {
+        height: 50vw;
+      }
+      @media only screen and (min-width: 768px) {
+        height: 16vw;
+      }
+      @media only screen and (min-width: 1024px) {
+        height: 12vw;
+      }
+      @media only screen and (min-width: 1200px) {
+        height: 10vw;
+      }
+      @media only screen and (min-width: 1400px) {
+        height: 8vw;
+      }
+      @media only screen and (min-width: 2560px) {
+        height: 5vw;
+      }
+    }
+
+    .card-body {
+      border-top: 1px solid #8080805c;
+      height: 40px;
+      text-align: center;
+    }
+
   }
 
 }
