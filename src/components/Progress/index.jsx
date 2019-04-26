@@ -48,22 +48,28 @@ export default class Progress extends React.Component {
     const hasInstructorRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )
     if (hasInstructorRights) {
       return (
-        <ProgressList progress={progress}/>
+        <React.Fragment>
+          <ProgressBanner has_progress={(progress.length ? true : false)} has_rights={hasInstructorRights}/>
+          <ProgressList progress={progress}/>
+        </React.Fragment>
       );
     }
 
     return (
-      <div className="row">
-        <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        {progress && (
-          <div className="row equal-col-height">
-            {progress.map(learnerProgress => (
-              <ProgressCard key={learnerProgress.block_id} data={learnerProgress}/>
-            ))}
+      <React.Fragment>
+        <ProgressBanner has_progress={(progress.length ? true : false)} has_rights={hasInstructorRights}/>
+        <div className="row">
+          <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          {progress && (
+            <div className="row equal-col-height">
+              {progress.map(learnerProgress => (
+                <ProgressCard key={learnerProgress.block_id} data={learnerProgress}/>
+              ))}
+            </div>
+          )}
           </div>
-        )}
         </div>
-      </div>
+      </React.Fragment>
     );
   }
   // <div className="card-deck col-sm-12 col-md-12 col-lg-12 mb-3">
@@ -90,6 +96,7 @@ export default class Progress extends React.Component {
 
     return (
       <React.Fragment>
+        <BackendStatusBanner />
         {this.hasBadgeProgress() && (
            this.renderBadgeProgress()
         )}
@@ -106,8 +113,7 @@ export default class Progress extends React.Component {
 
 // <div className="d-flex justify-content-center">
 // <div className="progress-container">
-// <BackendStatusBanner />
-// <ProgressBanner has_progress={(progress.length ? true : false)}/>
+
 //
 // { this.props.showSpinner && (
 //   <div className="spinner-overlay">

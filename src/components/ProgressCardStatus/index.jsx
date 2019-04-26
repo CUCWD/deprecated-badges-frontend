@@ -33,7 +33,7 @@ const ProgressCardStatus = (props) => {
   // <TextClamp fontSize={14} maxLines={2} rgbBgColor={'rgba(255,255,255,0)'} textAlign={'left'}>
 
   return (
-    <div className="card-status p-2">
+    <div className="card-status pt-2 pr-0 pb-2 pl-0">
       {getStatusIndicator()}
       {getStatusTitle()}
     </div>
