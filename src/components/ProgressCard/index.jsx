@@ -37,7 +37,7 @@ const ProgressCard = (props) => {
           // href={_assertionUrl} target="_blank"
           // <img className="card-img-top asserted" src={data.badge_class.image} alt={data.badge_class.display_name} />
 
-          <ProgressDetails title="I am the modal!" body="I was invoked by a button!" parentSelector=".modal-progress-details" badgeClass={data.badge_class} />
+          <ProgressDetails key={data.assertion.entityId} title="I am the modal!" body="I was invoked by a button!" parentSelector=".modal-progress-details" progress={data} />
         )}
         {!_assertionUrl && (
           <img className="card-img-top not-asserted" src={data.badge_class.image} alt={data.badge_class.display_name} />

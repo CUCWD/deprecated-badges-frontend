@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Moment from 'react-moment'
+import ReactMarkdown from 'react-markdown'
 
 import {
   Button,
+  Hyperlink,
   // InputSelect,
   Modal,
   // SearchField,
@@ -11,6 +14,7 @@ import {
   // Table,
   Icon,
 } from '@edx/paragon';
+
 import ProgressCard from "../ProgressCard";
 
 
@@ -25,6 +29,18 @@ export default class ProgressDetails extends React.Component {
       modalOpen: false,
       modalModel: [{}],
     };
+
+    // Set the output format for every react-moment instance.
+    Moment.globalFormat = 'MMMM D, YYYY';
+
+    // Set the timezone for every instance.
+    // Moment.globalTimezone = 'America/Los_Angeles';
+
+    // Set the output timezone for local for every instance.
+    Moment.globalLocal = true;
+
+    // Use a <span> tag for every react-moment instance.
+    Moment.globalElement = 'span';
   }
 
   openModal() {
@@ -44,11 +60,11 @@ export default class ProgressDetails extends React.Component {
 
   render() {
     const {
-      badgeClass
+      progress
     } = this.props;
 
     const childElements = (
-      <img className="card-img-top asserted" src={badgeClass.image} alt={badgeClass.display_name} />
+      <img className="card-img-top asserted" src={progress.badge_class.image} alt={progress.badge_class.display_name} />
     );
 
     return (
@@ -70,33 +86,39 @@ export default class ProgressDetails extends React.Component {
                 <div className="progress-details">
                   <div className="progress-details-header mb-5">
                     <div className="progress-details-title row w-100">
-                      <h2 className="col">{badgeClass.display_name}</h2>
+                      <h2 className="col">{progress.badge_class.display_name}</h2>
                     </div>
                     <div className="progress-details-description row w-100">
                       <p className="col">
-                        {badgeClass.description}
+                        {progress.badge_class.description}
                       </p>
                     </div>
                   </div>
                   <div className="progress-details-body row w-100">
                     <div className="progress-details-image col col-3">
-                      <img src={badgeClass.image} alt={badgeClass.display_name} />
+                      <img src={progress.badge_class.image} alt={progress.badge_class.display_name} />
                     </div>
                     <div className="progress-details-meta col col-9">
+                      <div className="progress-details-meta-earned">
+                        <h3>Earned</h3>
+                        <p><Moment>{progress.assertion.issuedOn}</Moment></p>
+                      </div>
                       <div className="progress-details-meta-recipient">
                         <h3>Recipient</h3>
-                        <p>{badgeClass.recipient}</p>
+                        <p>{progress.assertion.recipient.plaintextIdentity}</p>
                       </div>
                       <div className="progress-details-meta-criteria">
                         <h3>Criteria</h3>
-                        <p>{badgeClass.criteria}</p>
+                        <p><ReactMarkdown source={progress.badge_class.criteria} /></p>
                       </div>
                       <div className="progress-details-meta-issuer">
                         <h3>Issuer</h3>
-                        <p>{badgeClass.issuer}</p>
-                      </div>
-                      <div className="progress-details-meta-share">
-                        <p>Please use Badgr.io to download and upload your badge content.</p>
+                        <ul className="pl-0">
+                          <li>
+                            <span className="mr-2"><Hyperlink destination={progress.assertion.issuer.openBadgeId} content={progress.assertion.issuer.name} target="_blank" /></span>
+                            <span>{progress.assertion.issuer.email}</span>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -117,6 +139,12 @@ export default class ProgressDetails extends React.Component {
     );
   }
 }
+
+// <span className="mr-2"><img src={progress.assertion.issuer.image} title={progress.assertion.issuer.name} /></span>
+//<div className="progress-details-meta-share">
+//  <p>Please enroll Badgr.io to download and upload your badge content.</p>
+//</div>
+
 //   <tr className={classNames('progress-card-list-item', classAsserted)}>
 //     <td>{badge.block_display_name}</td>
 //     <td className="badge-name">
@@ -140,7 +168,7 @@ ProgressDetails.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   body: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   parentSelector: PropTypes.string,
-  badgeClass: PropTypes.shape({}).isRequired,
+  progress: PropTypes.shape({}).isRequired,
 };
 // ProgressDetails.propTypes = {
 //   data: PropTypes.shape({}).isRequired,

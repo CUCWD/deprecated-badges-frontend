@@ -51,6 +51,36 @@
 
               .progress-details-meta {
 
+                .progress-details-meta-earned,
+                .progress-details-meta-recipient,
+                .progress-details-meta-criteria,
+                .progress-details-meta-issuer {
+
+                  h3 {
+                    color: #767676 !important;
+                  }
+
+                  margin-bottom: 20px;
+
+                }
+
+                .progress-details-meta-issuer {
+
+                  ul {
+
+                    li {
+                      list-style: none;
+
+                      img {
+                        width: 40px;
+                        height: 40px;
+                      }
+                    }
+
+                  }
+
+                }
+
               }
 
             }
