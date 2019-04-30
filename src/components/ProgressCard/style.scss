@@ -58,6 +58,10 @@
 
 .asserted {
   color: rgba(0,0,0,1);
+
+  &:hover {
+    background-color: rgba(13,129,1,0.2);
+  }
 }
 
 .not-asserted {

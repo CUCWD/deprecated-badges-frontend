@@ -1,0 +1,67 @@
+
+.modal-progress-details {
+
+  .modal {
+
+    .modal-dialog {
+
+      min-width: 60%;
+
+      .modal-content {
+
+        padding: 15px;
+
+        .modal-body {
+
+          .progress-details {
+
+            text-align: left;
+
+            .progress-details-header {
+
+              .progress-details-title {
+
+                h2 {
+                  font-size: 30px;
+                  font-weight: lighter;
+                }
+
+              }
+
+              .progress-details-description {
+
+                p {
+                  font-size: 16px;
+                }
+
+              }
+
+            }
+
+            .progress-details-body {
+
+              .progress-details-image {
+
+                img {
+                  max-width: 70%;
+                  margin: 0px 40px;
+                }
+
+              }
+
+              .progress-details-meta {
+
+              }
+
+            }
+
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+}
