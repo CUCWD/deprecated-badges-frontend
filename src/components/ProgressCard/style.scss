@@ -58,12 +58,18 @@
 
 .asserted {
   color: rgba(0,0,0,1);
+
+  &:hover {
+    background-color: rgba(13,129,1,0.2);
+  }
 }
 
 .not-asserted {
+  /* https://stackoverflow.com/questions/35374021/css-grayscale-filter-changing-logos-to-different-shades */
+
   //color: rgba(132, 132, 132, 0.15);
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%) brightness(60%) contrast(10000000%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%) brightness(60%) contrast(10000000%);
   filter: alpha(opacity=15);
   opacity: 0.15 !important;
   //filter: alpha(opacity=15);

@@ -80,10 +80,11 @@ export default class Progress extends React.Component {
       <StatusAlert
         dialog={
           <React.Fragment>
-            <Icon className={['fa', 'fa-exclamation-circle', 'mr-2']} />
+            <Icon className="fa fa-exclamation-circle mr-2" screenReaderText="Badge Progress Icon" />
             There is no course badge progress to show.
           </React.Fragment>
         }
+        alertType="info"
         dismissible={false}
         open
       />
@@ -145,8 +146,25 @@ export default class Progress extends React.Component {
 Progress.propTypes = {
   progress: PropTypes.arrayOf(PropTypes.shape({
     assertion: PropTypes.shape({
+      issuedOn: PropTypes.string,
+      expires: PropTypes.string,
+      revoked: PropTypes.bool,
       assertion_url: PropTypes.string,
       image_url: PropTypes.string,
+      entityId: PropTypes.string,
+      recipient: PropTypes.shape({
+        plaintextIdentity: PropTypes.string,
+      }),
+      issuer: PropTypes.shape({
+        entityType: PropTypes.string,
+        entityId: PropTypes.string,
+        openBadgeId: PropTypes.string,
+        name: PropTypes.string,
+        image: PropTypes.string,
+        email: PropTypes.string,
+        description: PropTypes.string,
+        url: PropTypes.string,
+      }),
     }),
     badge_class: PropTypes.shape({
       course_id: PropTypes.string,

@@ -4,17 +4,18 @@ import classNames from 'classnames';
 import { isEmptyObject } from '../../utils/empty'
 
 import {
-  // Button,
+  Button,
   // InputSelect,
-  // Modal,
+  Modal,
   // SearchField,
   // StatusAlert,
   // Table,
-  Icon,
+  // Icon,
 } from '@edx/paragon';
 
 import BadgeDownload from "../ProgressListItem";
 import ProgressCardStatus from "../ProgressCardStatus";
+import ProgressDetails from "../ProgressDetails";
 
 
 const ProgressCard = (props) => {
@@ -33,9 +34,11 @@ const ProgressCard = (props) => {
     return (
       <React.Fragment>
         {_assertionUrl && (
-          <a href={_assertionUrl} target="_blank">
-            <img className="card-img-top asserted" src={data.badge_class.image} alt={data.badge_class.display_name} />
-          </a>
+          // href={_assertionUrl} target="_blank"
+          // <img className="card-img-top asserted" src={data.badge_class.image} alt={data.badge_class.display_name} />
+
+          // title="I am the modal!" body="I was invoked by a button!"
+          <ProgressDetails key={data.assertion.entityId} parentSelector=".modal-progress-details" progress={data} />
         )}
         {!_assertionUrl && (
           <img className="card-img-top not-asserted" src={data.badge_class.image} alt={data.badge_class.display_name} />

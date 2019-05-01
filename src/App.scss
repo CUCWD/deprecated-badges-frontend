@@ -12,6 +12,7 @@ $fa-font-path: "font-awesome/fonts";
 @import "./components/ProgressBanner/style";
 @import "./components/ProgressCard/style";
 @import "./components/ProgressCardStatus/style";
+@import "./components/ProgressDetails/style";
 @import "./components/ProgressListItem/style";
 @import "./components/BadgeDownload/style";
 
@@ -21,4 +22,10 @@ $fa-font-path: "font-awesome/fonts";
     list-style-type: none;
   }
 }
+
+/* Adding this to make sure that the SCSS for Collapsible gets set back to the default
+   For some reason not doing this the collapsible component wouldn't work correctly.
+   https://openedx.slack.com/archives/C0EUBSV7D/p1556733659001800
+*/
+@import "~@edx/paragon/src/Collapsible/Collapsible";
 

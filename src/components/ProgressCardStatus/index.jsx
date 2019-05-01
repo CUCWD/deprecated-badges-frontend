@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import TextClamp from 'react-text-clamp'
+//import TextClamp from 'react-text-clamp'
 
 import {
   Icon,
@@ -13,15 +13,11 @@ const ProgressCardStatus = (props) => {
   const getStatusIndicator = () => {
     const indicatorIcon = ( props.status ? 'fa-check-circle' : 'fa-circle-thin' );
     const indicatorStatus = ( props.status ? 'complete' : 'incomplete' );
-
     return (
-      <Icon className={[classNames('card-status-icon', 'fa', 'fa-2x', indicatorIcon, indicatorStatus, 'mr-3')]} />
+      <Icon className={classNames('card-status-icon', 'fa', 'fa-2x', indicatorIcon, indicatorStatus, 'mr-3')} screenReaderText="Badge Progress Status Icon" />
     );
   };
 
-  /*
-  className="card-title my-0 font-weight-normal"
-   */
   const getStatusTitle = () => {
     let stripNumPrefix = props.title.replace(/[0-9]+\./g, '');
     return (

@@ -103,8 +103,24 @@ const apiPayload = {
             image: "https://media.us.badgr.io/uploads/badges/issuer_badgeclass_0382d177-a291-4fb0-a504-3935a43b431f.svg"
           },
           assertion: {
+            issuedOn: "2019-04-20T02:43:06.566955Z",
+            expires: "2019-04-30T00:00:00.000000Z",
+            revoked: false,
             image_url: "https://api.badgr.io/public/assertions/vsDktqmrT3GJLbNhBvqLig/image",
-            assertion_url: "https://badgr.io/public/assertions/vsDktqmrT3GJLbNhBvqLig"
+            assertion_url: "https://badgr.io/public/assertions/vsDktqmrT3GJLbNhBvqLig",
+            recipient: {
+              plaintextIdentity: "edx@example.com"
+            },
+            issuer: {
+              entityType: "Issuer",
+              entityId: "npqlh0acRFG5pKKbnb4SRg",
+              openBadgeId: "https://api.badgr.io/public/issuers/npqlh0acRFG5pKKbnb4SRg",
+              name: "EducateWorkforce",
+              image: "https://media.us.badgr.io/uploads/issuers/issuer_logo_77bb4498-838b-45b7-8722-22878fedb5e8.svg",
+              email: "cucwd.developer@gmail.com",
+              description: "An online learning solution offered with partnering 2-year colleges to help integrate web and digital solutions into their existing courses. The platform was designed by multiple instructional design, usability, and computing experts to include research-based learning features.",
+              url: "https://ew-localhost.com",
+            },
           }
         },
         {
@@ -123,8 +139,24 @@ const apiPayload = {
             image: "https://media.us.badgr.io/uploads/badges/issuer_badgeclass_a8d0db24-97d8-486f-a150-d86365857edf.png"
           },
           assertion: {
+            issuedOn: "2019-04-22T02:43:06.566955Z",
+            expires: null,
+            revoked: true,
             image_url: "https://api.badgr.io/public/assertions/99tTj7uJTHWBXd7PMfAvgA/image",
-            assertion_url: "https://api.badgr.io/public/assertions/99tTj7uJTHWBXd7PMfAvgA"
+            assertion_url: "https://api.badgr.io/public/assertions/99tTj7uJTHWBXd7PMfAvgA",
+            recipient: {
+              plaintextIdentity: "edx@example.com"
+            },
+            issuer: {
+              entityType: "Issuer",
+              entityId: "npqlh0acRFG5pKKbnb4SRg",
+              openBadgeId: "https://api.badgr.io/public/issuers/npqlh0acRFG5pKKbnb4SRg",
+              name: "EducateWorkforce",
+              image: "https://media.us.badgr.io/uploads/issuers/issuer_logo_77bb4498-838b-45b7-8722-22878fedb5e8.svg",
+              email: "cucwd.developer@gmail.com",
+              description: "An online learning solution offered with partnering 2-year colleges to help integrate web and digital solutions into their existing courses. The platform was designed by multiple instructional design, usability, and computing experts to include research-based learning features.",
+              url: "https://ew-localhost.com",
+            },
           }
         },
         {
@@ -143,8 +175,24 @@ const apiPayload = {
             image: "http://example.com/media/badge_classes/badges/special_xdpqpBv_9FYOZwN.png"
           },
           assertion: {
+            issuedOn: "",
+            expires: null,
+            revoked: false,
             image_url: "",
-            assertion_url: ""
+            assertion_url: "",
+            recipient: {
+              plaintextIdentity: ""
+            },
+            issuer: {
+              entityType: "",
+              entityId: "",
+              openBadgeId: "",
+              name: "",
+              image: "",
+              email: "",
+              description: "",
+              url: "",
+            },
           }
         },
         {
@@ -163,8 +211,24 @@ const apiPayload = {
             image: "http://example.com/media/badge_classes/badges/special_xdpqpBv_9FYOZwN.png"
           },
           assertion: {
+            issuedOn: "",
+            expires: null,
+            revoked: false,
             image_url: "",
-            assertion_url: ""
+            assertion_url: "",
+            recipient: {
+              plaintextIdentity: "edx@example.com"
+            },
+            issuer: {
+              entityType: "",
+              entityId: "",
+              openBadgeId: "",
+              name: "",
+              image: "",
+              email: "",
+              description: "",
+              url: "",
+            },
           }
         },
         {
@@ -183,9 +247,25 @@ const apiPayload = {
             image: "http://example.com/media/badge_classes/badges/special_xdpqpBv_9FYOZwN.png"
           },
           assertion: {
+            issuedOn: "",
+            expires: null,
+            revoked: false,
             image_url: "",
-            assertion_url: ""
-          }
+            assertion_url: "",
+            recipient: {
+              plaintextIdentity: ""
+            }
+          },
+          issuer: {
+            entityType: "",
+            entityId: "",
+            openBadgeId: "",
+            name: "",
+            image: "",
+            email: "",
+            description: "",
+            url: "",
+          },
         }
     ],
   }

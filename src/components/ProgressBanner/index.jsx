@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from "prop-types";
 import classNames from 'classnames';
 
-import {
-//   Button,
-//   InputSelect,
-//   Modal,
-//   SearchField,
-//   StatusAlert,
-//   Table,
-  Icon,
-} from '@edx/paragon';
+// import {
+// //   Button,
+// //   InputSelect,
+// //   Modal,
+// //   SearchField,
+// //   StatusAlert,
+// //   Table,
+// //   Icon,
+// } from '@edx/paragon';
 import {isEmptyObject} from "../../utils/empty";
 
 const ProgressBanner = ({has_progress, has_rights}) => {
