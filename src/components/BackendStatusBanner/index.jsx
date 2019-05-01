@@ -46,9 +46,9 @@ class BackendStatusBanner extends React.Component {
           )}
         >
           <Button
-            label="↻"
+            children="↻"
             buttonType="sm"
-            className={[styles['btn-outline-primary']]}
+            className={styles['btn-outline-primary']}
             onClick={this.props.pingLms}
           />
           {' '}

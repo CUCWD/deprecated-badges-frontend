@@ -10,7 +10,7 @@ import {
   // SearchField,
   // StatusAlert,
   // Table,
-  Icon,
+  // Icon,
 } from '@edx/paragon';
 
 import BadgeDownload from "../ProgressListItem";
@@ -37,7 +37,8 @@ const ProgressCard = (props) => {
           // href={_assertionUrl} target="_blank"
           // <img className="card-img-top asserted" src={data.badge_class.image} alt={data.badge_class.display_name} />
 
-          <ProgressDetails key={data.assertion.entityId} title="I am the modal!" body="I was invoked by a button!" parentSelector=".modal-progress-details" progress={data} />
+          // title="I am the modal!" body="I was invoked by a button!"
+          <ProgressDetails key={data.assertion.entityId} parentSelector=".modal-progress-details" progress={data} />
         )}
         {!_assertionUrl && (
           <img className="card-img-top not-asserted" src={data.badge_class.image} alt={data.badge_class.display_name} />

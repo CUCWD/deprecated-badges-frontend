@@ -80,10 +80,11 @@ export default class Progress extends React.Component {
       <StatusAlert
         dialog={
           <React.Fragment>
-            <Icon className={['fa', 'fa-exclamation-circle', 'mr-2']} />
+            <Icon className="fa fa-exclamation-circle mr-2" screenReaderText="Badge Progress Icon" />
             There is no course badge progress to show.
           </React.Fragment>
         }
+        alertType="info"
         dismissible={false}
         open
       />
