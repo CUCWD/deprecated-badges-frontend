@@ -4,6 +4,7 @@ import { connectRouter } from 'connected-react-router';
 import posts from './posts';
 import comment from './comment';
 import progress from './progress';
+import roles from './roles';
 import connectionStatus from './connectionStatus';
 import { badgeActions } from '../constants/actionTypes/progress';
 
@@ -25,4 +26,5 @@ export default (history) => combineReducers({
   progress,
   connectionStatus,
   lmsDetails,
+  roles,
 });

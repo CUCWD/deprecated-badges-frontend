@@ -22,6 +22,11 @@ export default class Progress extends React.Component {
 
   componentDidMount() {
     // debugger;
+    this.props.getUserRoles(
+        this.props.userDetails.username,
+        this.props.courseDetails.id
+    );
+
     this.props.getCourseBadgesProgress(
       this.props.userDetails.username,
       this.props.courseDetails.id
@@ -44,12 +49,14 @@ export default class Progress extends React.Component {
   renderBadgeProgress() {
     const progress = this.getBadgeProgress();
 
+    debugger;
+
     // Todo: Need to add instructor scope to render out ProgressList.
-    const hasInstructorRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )
-    if (hasInstructorRights) {
+    // const hasInstructorStaffRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )
+    if (this.props.hasInstructorStaffRights) {
       return (
         <React.Fragment>
-          <ProgressBanner has_progress={(progress.length ? true : false)} has_rights={hasInstructorRights}/>
+          <ProgressBanner has_progress={(progress.length ? true : false)} has_rights={this.props.hasInstructorStaffRights}/>
           <ProgressList progress={progress}/>
         </React.Fragment>
       );
@@ -57,7 +64,7 @@ export default class Progress extends React.Component {
 
     return (
       <React.Fragment>
-        <ProgressBanner has_progress={(progress.length ? true : false)} has_rights={hasInstructorRights}/>
+        <ProgressBanner has_progress={(progress.length ? true : false)} has_rights={this.props.hasInstructorStaffRights}/>
         <div className="row">
           <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
           {progress && (
@@ -182,6 +189,8 @@ Progress.propTypes = {
     event_type: PropTypes.string,
   })),
   showSpinner: PropTypes.bool,
+  hasInstructorStaffRights: PropTypes.bool,
+  getUserRoles: PropTypes.func.isRequired,
   getCourseBadgesProgress: PropTypes.func.isRequired,
 };
 

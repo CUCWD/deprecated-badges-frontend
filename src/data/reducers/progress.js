@@ -10,6 +10,10 @@ const initialState = {
   showSpinner: true,
 };
 
+function debug(args) {
+    debugger;
+  return true;
+}
 
 const badges = (state = initialState, action) => {
   switch(action.type)

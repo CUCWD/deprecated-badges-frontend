@@ -3,8 +3,12 @@ import { connect } from 'react-redux';
 
 import Progress from '../../components/Progress'
 import {
-  fetchCourseBadgesProgress
+  fetchCourseBadgesProgress,
 } from '../../data/actions/progress';
+
+import {
+  fetchUserRoles,
+} from '../../data/actions/roles';
 
 function debug(args) {
   debugger;
@@ -20,17 +24,21 @@ function shouldShowSpinner(state) {
   return state.progress.badges.showSpinner;
 }
 
-const mapStateToProps = (state, ownProps) => (
+const mapStateToProps = (state, ownProps) => debug() && (
   {
     progress: state.progress.badges.results,
     courseDetails: state.lmsDetails.course,
     userDetails: state.lmsDetails.user,
     showSpinner: shouldShowSpinner(state),
+    hasInstructorStaffRights: state.roles.roles.hasInstructorStaffRights,
   }
 );
 
 const mapDispatchToProps = dispatch => debug && (
   {
+    getUserRoles: (user, courseId) => {
+        dispatch(fetchUserRoles(user, courseId))
+    },
     getCourseBadgesProgress: (user, courseId) => {
         dispatch(fetchCourseBadgesProgress(user, courseId))
     },

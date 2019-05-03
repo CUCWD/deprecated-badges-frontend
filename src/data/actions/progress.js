@@ -7,7 +7,7 @@ import LmsApiService from '../services/LmsApiService';
 
 function debug(args) {
     debugger;
-    return true;
+  return true;
 }
 
 const startFetchingCourseBadgeProgress = () => (
@@ -21,7 +21,7 @@ const finishedFetchingCourseBadgeProgress = () => (
     type: badgeActions.request.REQUEST_FINISHED_FETCHING_COURSE_BADGES
   }
 );
-// debug() &&
+
 const errorFetchingCourseBadgeProgress = (response, previousCourseBadgesState) => (
   {
     type: badgeActions.request.REQUEST_ERROR_FETCHING_COURSE_BADGES,
@@ -37,35 +37,33 @@ const gotCourseBadgeProgress = (progress) => (
   }
 );
 
-
 const fetchCourseBadgesProgress = (user, courseId) => (
-  (dispatch) => {
+    (dispatch)=> {
+        dispatch(startFetchingCourseBadgeProgress());
 
-    dispatch(startFetchingCourseBadgeProgress());
+        return LmsApiService.requestUserBadgeProgress(user, courseId)
+          .then((response) => {
+            // debugger;
+            if (response.ok) {
+              return (process.env.MOCK_LMS_API ? response.result : response.json());
+            }
+            throw new Error(response);
+          })
+          .then((data) => {
+            // debugger;
 
-    return LmsApiService.requestUserBadgeProgress(user, courseId)
-      .then((response) => {
-        // debugger;
-        if (response.ok) {
-          return (process.env.MOCK_LMS_API ? response.result : response.json());
-        }
-        throw new Error(response);
-      })
-      .then((data) => {
-        // debugger;
+            dispatch(gotCourseBadgeProgress(
+              data
+            ));
+            dispatch(finishedFetchingCourseBadgeProgress());
 
-        dispatch(gotCourseBadgeProgress(
-          data
-        ));
-        dispatch(finishedFetchingCourseBadgeProgress());
+            return Promise.resolve();
+          })
+          .catch((error) => {
+            dispatch(errorFetchingCourseBadgeProgress(error));
 
-        return Promise.resolve();
-      })
-      .catch((error) => {
-        dispatch(errorFetchingCourseBadgeProgress(error));
-
-        return Promise.resolve();
-      });
+            return Promise.resolve();
+          });
   }
 );
 
