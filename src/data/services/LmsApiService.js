@@ -36,7 +36,7 @@ class Service {
   }
 
   static requestCourseBadgeProgress(courseId) {
-    debugger;
+    // debugger;
 
     let params = { master_course_id: `${courseId}` }
     let query = Object.keys(params)
@@ -56,7 +56,7 @@ class Service {
       },
     );
   }
-        
+
   static fetchUserRoles(courseId) {
 //    debugger;
     return fetch(
@@ -94,7 +94,7 @@ class MockService {
       }, delay);
     });
   }
-  
+
   static requestCourseBadgeProgress(courseId) {
     // debugger;
 

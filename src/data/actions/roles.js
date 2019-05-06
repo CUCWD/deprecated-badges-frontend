@@ -13,7 +13,7 @@ function debug(args) {
 }
 
 
-const gotRoles = (isInstructorRights, courseId) => debug() && ({
+const gotRoles = (isInstructorRights, courseId) => ({
   type: badgeActions.request.GOT_ROLES,
   isInstructorRights,
   courseId
@@ -27,14 +27,14 @@ const fetchUserRoles = (user, courseId) => (
 
         return LmsApiService.fetchUserRoles()
             .then((response) => {
-                debugger;
+                // debugger;
                 if (response.ok) {
                   return (process.env.MOCK_LMS_API ? response.result : response.json());
                 }
                 throw new Error(response);
             })
             .then((data) => {
-                debugger;
+                // debugger;
             const isInstructorRights = (data.some(role => (role.course_id === courseId)
                                         && allowedRoles.includes(role.role)));
             dispatch(gotRoles(isInstructorRights, courseId));

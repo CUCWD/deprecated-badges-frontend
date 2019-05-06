@@ -49,7 +49,7 @@ export default class Progress extends React.Component {
   renderBadgeProgress() {
     const progress = this.getBadgeProgress();
 
-    debugger;
+    // debugger;
 
     // Todo: Need to add instructor scope to render out ProgressList.
     // const hasInstructorStaffRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )

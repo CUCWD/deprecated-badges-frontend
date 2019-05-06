@@ -16,7 +16,7 @@ const roles = (state = initialState, action) => {
   switch(action.type)
   {
     case badgeActions.request.GOT_ROLES:
-      debugger;
+      // debugger;
         return {
           ...state,
           hasInstructorStaffRights: action.isInstructorRights,

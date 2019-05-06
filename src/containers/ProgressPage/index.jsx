@@ -24,7 +24,7 @@ function shouldShowSpinner(state) {
   return state.progress.badges.showSpinner;
 }
 
-const mapStateToProps = (state, ownProps) => debug() && (
+const mapStateToProps = (state, ownProps) => (
   {
     progress: state.progress.badges.results,
     courseDetails: state.lmsDetails.course,
