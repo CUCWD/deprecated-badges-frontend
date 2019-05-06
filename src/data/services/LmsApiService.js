@@ -56,6 +56,21 @@ class Service {
       },
     );
   }
+        
+  static fetchUserRoles(courseId) {
+//    debugger;
+    return fetch(
+      `${endpoints.enrollmentRoles}/`, {
+          credentials: 'same-origin',
+          method: 'get',
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'X-CSRFToken': Cookies.get('csrftoken'),
+          },
+      },
+    );
+  }
 
 }
 
@@ -79,13 +94,23 @@ class MockService {
       }, delay);
     });
   }
-
+  
   static requestCourseBadgeProgress(courseId) {
     // debugger;
 
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], apiPayload.requestCourseBadgeProgress));
+      }, delay);
+    });
+  }
+
+  static fetchUserRoles(courseId) {
+    // debugger;
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(Object.assign([], apiPayload.fetchUserRoles));
       }, delay);
     });
   }
@@ -688,6 +713,56 @@ const apiPayload = {
         ],
       },
     ],
+  },
+  fetchUserRoles: {
+    ok: true,
+    redirected: false,
+    status: 200,
+    statusText: "OK",
+    type: "basic",
+    url: "http://localhost:1991/api/enrollment/v1/roles/?course_id=course-v1:edX+DemoX+Demo_Course/",
+    result: [
+      {
+        "course_id": "course-v1:CUCWD+CAT101+2019_Spring",
+        "org": "CUCWD",
+        "role": "staff"
+      },
+      {
+        "course_id": "course-v1:CUCWD+QUAL107+TEMPLATE",
+        "org": "CUCWD",
+        "role": "staff"
+      },
+      {
+        "course_id": "course-v1:CUCWD+BD101+2019_Dev",
+        "org": "CUCWD",
+        "role": "staff"
+      },
+      {
+        "course_id": "course-v1:CUCWD+BD101+2019_Dev",
+        "org": "CUCWD",
+        "role": "instructor"
+      },
+      {
+        "course_id": "course-v1:CUCWD+QUAL107+TEMPLATE",
+        "org": "CUCWD",
+        "role": "instructor"
+      },
+      {
+        "course_id": "course-v1:CUCWD+SFT106+BADGE_TESTING",
+        "org": "CUCWD",
+        "role": "instructor"
+      },
+      {
+        "course_id": "course-v1:CUCWD+CAT101+2019_Spring",
+        "org": "CUCWD",
+        "role": "instructor"
+      },
+      {
+        "course_id": "course-v1:CUCWD+SFT106+BADGE_TESTING",
+        "org": "CUCWD",
+        "role": "staff"
+      }
+    ]
   }
 };
 

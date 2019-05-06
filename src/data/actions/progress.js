@@ -7,7 +7,7 @@ import LmsApiService from '../services/LmsApiService';
 
 function debug(args) {
     debugger;
-    return true;
+  return true;
 }
 
 const startFetchingCourseBadgeProgress = () => (
@@ -21,7 +21,7 @@ const finishedFetchingCourseBadgeProgress = () => (
     type: badgeActions.request.REQUEST_FINISHED_FETCHING_COURSE_BADGES
   }
 );
-// debug() &&
+
 const errorFetchingCourseBadgeProgress = (response, previousCourseBadgesState) => (
   {
     type: badgeActions.request.REQUEST_ERROR_FETCHING_COURSE_BADGES,
@@ -36,7 +36,6 @@ const gotCourseBadgeProgress = (progress) => (
     progress
   }
 );
-
 
 const fetchCourseBadgesProgress = (userName, courseId) => (
   (dispatch) => {
@@ -96,7 +95,6 @@ const fetchCourseBadgesProgress = (userName, courseId) => (
           return Promise.resolve();
         });
     }
-
   }
 );
 
