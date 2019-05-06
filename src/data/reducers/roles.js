@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 
 const initialState = {
   results: [],
-  hasInstructorStaffRights: false,
+  hasInstructorStaffRights: null,
 };
 
 function debug(args) {

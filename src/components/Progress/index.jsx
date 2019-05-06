@@ -14,7 +14,6 @@ import ProgressBanner from '../ProgressBanner';
 import ProgressList from '../ProgressList';
 import ProgressCard from "../ProgressCard";
 
-
 export default class Progress extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -26,12 +25,23 @@ export default class Progress extends React.Component {
         this.props.userDetails.username,
         this.props.courseDetails.id
     );
-
-    this.props.getCourseBadgesProgress(
-      this.props.userDetails.username,
-      this.props.courseDetails.id
-    );
   }
+
+  componentDidUpdate(prevProps) {
+    // debugger;
+    const { hasInstructorStaffRights } = this.props;
+    if (hasInstructorStaffRights && hasInstructorStaffRights !== prevProps.hasInstructorStaffRights) {
+      this.props.getCourseBadgesProgress(
+        this.props.userDetails.username,
+        this.props.courseDetails.id,
+        this.props.hasInstructorStaffRights
+      );
+    }
+  }
+
+  // hasUserRole() {
+  //   return (this.props.hasInstructorStaffRights !== undefined
+  // }
 
   getBadgeProgress(courseStatus) {
     const { progress } = this.props;
@@ -108,7 +118,9 @@ export default class Progress extends React.Component {
         {this.hasBadgeProgress() && (
            this.renderBadgeProgress()
         )}
-        {!this.hasBadgeProgress() && this.renderNoBadgeProgress()}
+        {!this.hasBadgeProgress() && (
+           this.renderNoBadgeProgress()
+        )}
       </React.Fragment>
     );
   }

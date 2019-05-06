@@ -39,8 +39,8 @@ const mapDispatchToProps = dispatch => debug && (
     getUserRoles: (user, courseId) => {
         dispatch(fetchUserRoles(user, courseId))
     },
-    getCourseBadgesProgress: (user, courseId) => {
-        dispatch(fetchCourseBadgesProgress(user, courseId))
+    getCourseBadgesProgress: (user, courseId, hasInstructorStaffRights) => {
+        dispatch(fetchCourseBadgesProgress(user, courseId, hasInstructorStaffRights))
     },
   }
 );

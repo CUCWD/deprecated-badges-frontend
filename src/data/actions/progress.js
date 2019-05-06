@@ -37,13 +37,15 @@ const gotCourseBadgeProgress = (progress) => (
   }
 );
 
-const fetchCourseBadgesProgress = (userName, courseId) => (
+const fetchCourseBadgesProgress = (userName, courseId, hasInstructorStaffRights = false) => (
   (dispatch) => {
 
     dispatch(startFetchingCourseBadgeProgress());
 
-    const hasInstructorRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )
-    if (hasInstructorRights) {
+    debugger;
+
+    // const hasInstructorRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )
+    if (hasInstructorStaffRights) {
       // debugger;
       return LmsApiService.requestCourseBadgeProgress(courseId)
         .then((response) => {
