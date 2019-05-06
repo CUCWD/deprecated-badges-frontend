@@ -37,33 +37,64 @@ const gotCourseBadgeProgress = (progress) => (
   }
 );
 
-const fetchCourseBadgesProgress = (user, courseId) => (
-    (dispatch)=> {
-        dispatch(startFetchingCourseBadgeProgress());
+const fetchCourseBadgesProgress = (userName, courseId) => (
+  (dispatch) => {
 
-        return LmsApiService.requestUserBadgeProgress(user, courseId)
-          .then((response) => {
-            // debugger;
-            if (response.ok) {
-              return (process.env.MOCK_LMS_API ? response.result : response.json());
-            }
-            throw new Error(response);
-          })
-          .then((data) => {
-            // debugger;
+    dispatch(startFetchingCourseBadgeProgress());
 
-            dispatch(gotCourseBadgeProgress(
-              data
-            ));
-            dispatch(finishedFetchingCourseBadgeProgress());
+    const hasInstructorRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )
+    if (hasInstructorRights) {
+      // debugger;
+      return LmsApiService.requestCourseBadgeProgress(courseId)
+        .then((response) => {
+          // debugger;
+          if (response.ok) {
+            return (process.env.MOCK_LMS_API ? response.result : response.json());
+          }
+          throw new Error(response);
+        })
+        .then((data) => {
+          debugger;
 
-            return Promise.resolve();
-          })
-          .catch((error) => {
-            dispatch(errorFetchingCourseBadgeProgress(error));
+          // dispatch(gotCourseBadgeProgress(
+          //   data
+          // ));
+          // dispatch(finishedFetchingCourseBadgeProgress());
 
-            return Promise.resolve();
-          });
+          return Promise.resolve();
+        })
+        .catch((error) => {
+          dispatch(errorFetchingCourseBadgeProgress(error));
+
+          return Promise.resolve();
+        });
+    }
+    else {
+      // debugger;
+      return LmsApiService.requestUserBadgeProgress(courseId, userName)
+        .then((response) => {
+          // debugger;
+          if (response.ok) {
+            return (process.env.MOCK_LMS_API ? response.result : response.json());
+          }
+          throw new Error(response);
+        })
+        .then((data) => {
+          // debugger;
+
+          dispatch(gotCourseBadgeProgress(
+            data
+          ));
+          dispatch(finishedFetchingCourseBadgeProgress());
+
+          return Promise.resolve();
+        })
+        .catch((error) => {
+          dispatch(errorFetchingCourseBadgeProgress(error));
+
+          return Promise.resolve();
+        });
+    }
   }
 );
 
