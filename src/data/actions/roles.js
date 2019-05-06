@@ -1,5 +1,5 @@
 
-import { badgeActions } from '../constants/actionTypes/roles';
+import { roleActions } from '../constants/actionTypes/roles';
 // import * as apiClient from '../api/mock/client';
 // import * as apiClient from '../api/client';
 
@@ -14,12 +14,12 @@ function debug(args) {
 
 
 const gotRoles = (isInstructorRights, courseId) => ({
-  type: badgeActions.request.GOT_ROLES,
+  type: roleActions.request.GOT_ROLES,
   isInstructorRights,
   courseId
 });
 
-const errorFetchingRoles = () => ({ type: badgeActions.request.ERROR_FETCHING_ROLES });
+const errorFetchingRoles = () => ({ type: roleActions.request.ERROR_FETCHING_ROLES });
 
 
 const fetchUserRoles = (user, courseId) => (
