@@ -11,9 +11,8 @@ import {
 } from '@edx/paragon';
 import BackendStatusBanner from '../BackendStatusBanner';
 import ProgressBanner from '../ProgressBanner';
-import ProgressList from '../ProgressList';
+import ProgressCourseList from '../ProgressCourseList';
 import ProgressCard from "../ProgressCard";
-
 
 export default class Progress extends React.Component {
   constructor(props, context) {
@@ -26,12 +25,23 @@ export default class Progress extends React.Component {
         this.props.userDetails.username,
         this.props.courseDetails.id
     );
-
-    this.props.getCourseBadgesProgress(
-      this.props.userDetails.username,
-      this.props.courseDetails.id
-    );
   }
+
+  componentDidUpdate(prevProps) {
+    // debugger;
+    const { hasInstructorStaffRights } = this.props;
+    if (hasInstructorStaffRights !== prevProps.hasInstructorStaffRights) {
+      this.props.getCourseBadgesProgress(
+        this.props.userDetails.username,
+        this.props.courseDetails.id,
+        this.props.hasInstructorStaffRights
+      );
+    }
+  }
+
+  // hasUserRole() {
+  //   return (this.props.hasInstructorStaffRights !== undefined
+  // }
 
   getBadgeProgress(courseStatus) {
     const { progress } = this.props;
@@ -48,16 +58,19 @@ export default class Progress extends React.Component {
 
   renderBadgeProgress() {
     const progress = this.getBadgeProgress();
+    const { headings } = this.props;
 
-    debugger;
+    // debugger;
 
     // Todo: Need to add instructor scope to render out ProgressList.
     // const hasInstructorStaffRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )
     if (this.props.hasInstructorStaffRights) {
+      // debugger;
+
       return (
         <React.Fragment>
           <ProgressBanner has_progress={(progress.length ? true : false)} has_rights={this.props.hasInstructorStaffRights}/>
-          <ProgressList progress={progress}/>
+          <ProgressCourseList headings={headings} data={progress}/>
         </React.Fragment>
       );
     }
@@ -70,7 +83,7 @@ export default class Progress extends React.Component {
           {progress && (
             <div className="row equal-col-height">
               {progress.map(learnerProgress => (
-                <ProgressCard key={learnerProgress.block_id} data={learnerProgress}/>
+                <ProgressCard key={learnerProgress.block_id} data={learnerProgress} />
               ))}
             </div>
           )}
@@ -108,7 +121,9 @@ export default class Progress extends React.Component {
         {this.hasBadgeProgress() && (
            this.renderBadgeProgress()
         )}
-        {!this.hasBadgeProgress() && this.renderNoBadgeProgress()}
+        {!this.hasBadgeProgress() && (
+           this.renderNoBadgeProgress()
+        )}
       </React.Fragment>
     );
   }
@@ -187,6 +202,10 @@ Progress.propTypes = {
     block_order: PropTypes.number,
     course_id: PropTypes.string,
     event_type: PropTypes.string,
+  })),
+  headings: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    key: PropTypes.string,
   })),
   showSpinner: PropTypes.bool,
   hasInstructorStaffRights: PropTypes.bool,

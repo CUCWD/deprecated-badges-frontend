@@ -24,9 +24,10 @@ function shouldShowSpinner(state) {
   return state.progress.badges.showSpinner;
 }
 
-const mapStateToProps = (state, ownProps) => debug() && (
+const mapStateToProps = (state, ownProps) => (
   {
     progress: state.progress.badges.results,
+    headings: state.progress.badges.headings,
     courseDetails: state.lmsDetails.course,
     userDetails: state.lmsDetails.user,
     showSpinner: shouldShowSpinner(state),
@@ -39,8 +40,8 @@ const mapDispatchToProps = dispatch => debug && (
     getUserRoles: (user, courseId) => {
         dispatch(fetchUserRoles(user, courseId))
     },
-    getCourseBadgesProgress: (user, courseId) => {
-        dispatch(fetchCourseBadgesProgress(user, courseId))
+    getCourseBadgesProgress: (user, courseId, hasInstructorStaffRights) => {
+        dispatch(fetchCourseBadgesProgress(user, courseId, hasInstructorStaffRights))
     },
   }
 );

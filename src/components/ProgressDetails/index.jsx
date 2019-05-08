@@ -75,11 +75,11 @@ export default class ProgressDetails extends React.Component {
 
   render() {
     const {
-      progress
+      progress, minimal
     } = this.props;
 
     const childElements = (
-      <img className="card-img-top asserted" src={progress.badge_class.image} alt={progress.badge_class.display_name} />
+      <img className={classNames("card-img-top asserted", minimal)} src={progress.badge_class.image} alt={progress.badge_class.display_name} />
     );
 
     return (
@@ -203,6 +203,7 @@ export default class ProgressDetails extends React.Component {
 ProgressDetails.propTypes = {
   parentSelector: PropTypes.string,
   progress: PropTypes.shape({}).isRequired,
+  minimal: PropTypes.string,
 };
 
 ProgressDetails.defaultProps = {

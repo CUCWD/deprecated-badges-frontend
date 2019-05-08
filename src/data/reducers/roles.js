@@ -1,10 +1,10 @@
 
-import { badgeActions } from '../constants/actionTypes/roles';
+import { roleActions } from '../constants/actionTypes/roles';
 import { combineReducers } from 'redux';
 
 const initialState = {
   results: [],
-  hasInstructorStaffRights: false,
+  hasInstructorStaffRights: null,
 };
 
 function debug(args) {
@@ -15,12 +15,17 @@ function debug(args) {
 const roles = (state = initialState, action) => {
   switch(action.type)
   {
-    case badgeActions.request.GOT_ROLES:
-      debugger;
+    case roleActions.request.GOT_ROLES:
+      // debugger;
         return {
           ...state,
           hasInstructorStaffRights: action.isInstructorRights,
         };
+    case roleActions.request.ERROR_FETCHING_ROLES:
+      return {
+        ...state,
+        hasInstructorStaffRights: false,
+      };
     default:
       return state;
   }

@@ -4,6 +4,7 @@ import { combineReducers } from 'redux';
 
 const initialState = {
   results: [],
+  headings: [],
   startedFetching: false,
   finishedFetching: false,
   errorFetching: false,
@@ -23,6 +24,7 @@ const badges = (state = initialState, action) => {
       return {
         ...state,
         results: action.progress,
+        headings: action.headings,
         showSpinner: false,
       };
     case badgeActions.request.REQUEST_STARTED_FETCHING_COURSE_BADGES:
