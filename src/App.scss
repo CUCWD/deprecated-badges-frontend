@@ -13,7 +13,8 @@ $fa-font-path: "font-awesome/fonts";
 @import "./components/ProgressCard/style";
 @import "./components/ProgressCardStatus/style";
 @import "./components/ProgressDetails/style";
-@import "./components/ProgressListItem/style";
+@import "./components/ProgressCourseList/style";
+@import "./components/ProgressCourseListItem/style";
 @import "./components/BadgeDownload/style";
 
 /* Remove bullets in the primary navigation due to BFE.scss */

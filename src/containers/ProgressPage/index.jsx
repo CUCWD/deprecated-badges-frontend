@@ -27,6 +27,7 @@ function shouldShowSpinner(state) {
 const mapStateToProps = (state, ownProps) => (
   {
     progress: state.progress.badges.results,
+    headings: state.progress.badges.headings,
     courseDetails: state.lmsDetails.course,
     userDetails: state.lmsDetails.user,
     showSpinner: shouldShowSpinner(state),

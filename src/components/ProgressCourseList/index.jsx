@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ProgressListItem from '../ProgressListItem';
+import ProgressCourseListItem from '../ProgressCourseListItem';
 
 import {
 //   Button,
@@ -18,7 +18,7 @@ function debug(args) {
   return true;
 }
 
-export default class ProgressList extends React.Component {
+export default class ProgressCourseList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,10 +43,70 @@ export default class ProgressList extends React.Component {
     }
   }
 
+  getProgressCourseListData() {
+    const results = [];
+
+    // const dataHeadings = headings
+    //   .filter(headings => headings.keys)
+    //   .map(h => ({
+    //     h: ''
+    //   }));
+
+    // debugger;
+
+    // results.push(
+    //   "username": progress.user_name,
+    // )
+
+    this.props.data.forEach(function(item) {
+
+      const learnerData = {
+        username: item.user_name,
+      };
+
+      item.progress.forEach(function(item) {
+        learnerData[item.block_id] = (
+          <ProgressCourseListItem key={learnerData.username + "_" + item.block_id} badge={item}/>
+        );
+      });
+
+      results.push(learnerData);
+    });
+
+    return results;
+  }
+
   render() {
+    // debugger;
+
+    // tableSortable
+    // defaultSortedColumn={this.props.headings[0].key}
+    // defaultSortDirection="desc"
+
+    // hasFixedColumnWidths
     return (
       <div className="d-flex justify-content-center">
-        <table className="table">
+        <Table
+          columns={this.props.headings}
+          data={this.getProgressCourseListData()}
+          rowHeaderColumnKey="username"
+          className={['table-responsive thead-overflow-hidden']}
+        />
+      </div>
+    );
+  }
+};
+
+ProgressCourseList.propTypes = {
+  data: PropTypes.array.isRequired,
+  headings: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    key: PropTypes.string,
+  })).isRequired
+};
+
+/*
+<table className="table">
           <thead>
           <tr>
             <th>Module</th>
@@ -58,18 +118,12 @@ export default class ProgressList extends React.Component {
           </thead>
           <tbody>
           {this.props.progress && this.sortProgressByCourseBlockOrder(this.props.progress).map(badge =>
-            <ProgressListItem key={badge.block_id} badge={badge}/>
+            <ProgressCourseListItem key={badge.block_id} badge={badge}/>
           )}
           </tbody>
         </table>
-      </div>
-    );
-  }
-};
 
-ProgressList.propTypes = {
-  progress: PropTypes.array.isRequired,
-};
+ */
 
 /*
 <Table

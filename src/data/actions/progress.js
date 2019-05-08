@@ -3,6 +3,9 @@ import { badgeActions } from '../constants/actionTypes/progress';
 // import * as apiClient from '../api/mock/client';
 // import * as apiClient from '../api/client';
 
+import { headingMapper } from './utils'; //sortAlphaAsc
+const defaultAssignmentFilter = 'All';
+
 import LmsApiService from '../services/LmsApiService';
 
 function debug(args) {
@@ -30,10 +33,11 @@ const errorFetchingCourseBadgeProgress = (response, previousCourseBadgesState) =
   }
 );
 
-const gotCourseBadgeProgress = (progress) => (
+const gotCourseBadgeProgress = (progress, headings) => (
   {
     type: badgeActions.request.REQUEST_GOT_COURSE_BADGES,
-    progress
+    progress,
+    headings,
   }
 );
 
@@ -42,7 +46,7 @@ const fetchCourseBadgesProgress = (userName, courseId, hasInstructorStaffRights 
 
     dispatch(startFetchingCourseBadgeProgress());
 
-    debugger;
+    // debugger;
 
     // const hasInstructorRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )
     if (hasInstructorStaffRights) {
@@ -56,12 +60,13 @@ const fetchCourseBadgesProgress = (userName, courseId, hasInstructorStaffRights 
           throw new Error(response);
         })
         .then((data) => {
-          debugger;
+          // debugger;
 
-          // dispatch(gotCourseBadgeProgress(
-          //   data
-          // ));
-          // dispatch(finishedFetchingCourseBadgeProgress());
+          dispatch(gotCourseBadgeProgress(
+            data,
+            headingMapper(defaultAssignmentFilter, data)(data[0])
+          ));
+          dispatch(finishedFetchingCourseBadgeProgress());
 
           return Promise.resolve();
         })
