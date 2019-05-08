@@ -1,0 +1,35 @@
+
+.leaderboard-list-item {
+
+  .badge-name {
+
+    min-width: 400px;
+
+    img {
+      max-height: 50px;
+      max-width: 50px;
+    }
+
+    span {
+      display: inline-block;
+      margin-left: 20px;
+    }
+  }
+
+}
+
+.asserted {
+  color: rgba(0,0,0,1);
+}
+
+.not-asserted {
+  color: rgba(0,0,0,0.25);
+
+  .badge-name {
+
+    img {
+      opacity: 0.25;
+      filter: alpha(opacity=25);
+    }
+  }
+}

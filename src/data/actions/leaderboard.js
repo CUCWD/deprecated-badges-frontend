@@ -5,8 +5,6 @@ import { badgeActions } from '../constants/actionTypes/roles';
 
 import LmsApiService from '../services/LmsApiService';
 
-const allowedRoles = ['staff', 'instructor', 'support'];
-
 function debug(args) {
     //debugger;
   return true;

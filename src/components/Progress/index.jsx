@@ -46,6 +46,17 @@ export default class Progress extends React.Component {
     return progress && progress.length > 0;
   }
 
+  renderLeaderboard(){
+    const isleaderboard = true;
+    if(isleaderboard){
+      return(
+          <React.Fragment>
+           <LeaderboardList leabderboard={leaderboard} />
+          </React.Fragment>
+      );
+    }
+  }
+
   renderBadgeProgress() {
     const progress = this.getBadgeProgress();
 
