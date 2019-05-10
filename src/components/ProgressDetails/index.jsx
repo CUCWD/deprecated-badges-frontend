@@ -79,7 +79,7 @@ export default class ProgressDetails extends React.Component {
     } = this.props;
 
     const childElements = (
-      <img className={classNames("card-img-top asserted", minimal)} src={progress.badge_class.image} alt={progress.badge_class.display_name} />
+      <img className={classNames("card-img-top asserted", minimal)} src={progress.assertion.image_url} alt={progress.badge_class.display_name} />
     );
 
     return (
@@ -112,7 +112,7 @@ export default class ProgressDetails extends React.Component {
                   </div>
                   <div className="progress-details-body row w-100">
                     <div className="progress-details-image col col-3">
-                      <img src={progress.badge_class.image} alt={progress.badge_class.display_name} />
+                      <img src={progress.assertion.image_url} alt={progress.badge_class.display_name} />
                       <Button
                         children="View Backpack"
                         buttonType="primary"
