@@ -95,6 +95,10 @@
 
               background-color: #f2f2f2;
 
+              a {
+                font-weight: bold;
+              }
+
               .progress-details-share-instructions {
 
                 padding-bottom: 0px !important;
@@ -111,24 +115,34 @@
 
               .progress-details-share-badgr-instructions {
 
-                padding-top: 0px !important;
+                padding: 0px 10px 10px 10px !important;
 
                 .badgr-instructions {
 
                   ol {
                     padding-left: 20px;
                     list-style: none;
-                    counter-reset: badgr-instr-counter;
+                    list-style-position: outside;
+                    display: table;
+                    margin: 1em 0;
+                    margin-block-start: 1em;
+                    margin-block-end: 1em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                    padding-inline-start: 40px;
+                    /*counter-reset: badgr-instr-counter;*/
 
                     li {
-                      list-style: none;
-                      counter-increment: badgr-instr-counter;
+                      //list-style: none;
+                      list-style-type: decimal;
+                      //counter-increment: badgr-instr-counter;
 
+                      /*
                       &:before {
                         content: counter(badgr-instr-counter) ". ";
                         color: #444444;
                         font-weight: bold;
-                      }
+                      }*/
                     }
 
                   }
