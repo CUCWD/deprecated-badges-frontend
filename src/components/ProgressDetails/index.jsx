@@ -176,9 +176,9 @@ export default class ProgressDetails extends React.Component {
                       <div className="progress-details-share-badgr-instructions row w-100 p-4">
                         <div className="badgr-instructions col col-9">
                           <ol>
-                            <li><Hyperlink destination="https://badgr.io/signup" children="Create account" target="_blank"/>, or <Hyperlink destination="https://badgr.io/auth/login" children="sign in" target="_blank"/> to your existing <strong>Badgr</strong> account;</li>
-                            <li><strong>Share this public URL to your badge</strong>; or</li>
-                            <li><strong>Download your badge (right-click or option-click, save as)</strong> and share it
+                            <li>Create a <Hyperlink destination="https://badgr.io/signup" children="Badgr" target="_blank"/> account, or <Hyperlink destination="https://badgr.io/auth/login" children="log in" target="_blank"/> to your existing account;</li>
+                            <li><Hyperlink destination={progress.assertion.assertion_url} children="Share this public URL to your badge" target="_blank" />; or</li>
+                            <li><Hyperlink destination={progress.assertion.image_url} children="Download your badge (right-click or option-click, save as)" target="_blank" /> and share it
                               directly with others. They can verify it's really yours at <Hyperlink destination="https://badgecheck.io/" children="badgecheck.io" target="_blank"/>.</li>
                           </ol>
                         </div>
