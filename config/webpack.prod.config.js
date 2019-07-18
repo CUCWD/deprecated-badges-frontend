@@ -4,6 +4,7 @@ const Merge = require('webpack-merge');
 const commonConfig = require('./webpack.common.config.js');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -110,6 +111,18 @@ module.exports = Merge.smart(commonConfig, {
     new HtmlWebpackPlugin({
       inject: true, // Appends script tags linking to the webpack bundles at the end of the body
       template: path.resolve(__dirname, '../public/index.html'),
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'production',
+      MOCK_LMS_API: false,
+      BASE_URL: null,
+      LMS_BASE_URL: null,
+      LOGIN_URL: null,
+      LOGOUT_URL: null,
+      CSRF_TOKEN_API_PATH: null,
+      REFRESH_ACCESS_TOKEN_ENDPOINT: null,
+      ACCESS_TOKEN_COOKIE_NAME: 'edx-jwt-cookie-header-payload',
+      USER_INFO_COOKIE_NAME: 'edx-user-info',
     }),
   ],
 });
