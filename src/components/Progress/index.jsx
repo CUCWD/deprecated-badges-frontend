@@ -1,29 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button,
-  InputSelect,
-  Modal,
-  SearchField,
   StatusAlert,
-  Table,
   Icon,
 } from '@edx/paragon';
 import BackendStatusBanner from '../BackendStatusBanner';
 import ProgressBanner from '../ProgressBanner';
 import ProgressCourseList from '../ProgressCourseList';
-import ProgressCard from "../ProgressCard";
+import ProgressCard from '../ProgressCard';
 
 export default class Progress extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-  }
-
   componentDidMount() {
     // debugger;
     this.props.getUserRoles(
-        this.props.userDetails.username,
-        this.props.courseDetails.id
+      this.props.userDetails.username,
+      this.props.courseDetails.id,
     );
   }
 
@@ -34,16 +25,12 @@ export default class Progress extends React.Component {
       this.props.getCourseBadgesProgress(
         this.props.userDetails.username,
         this.props.courseDetails.id,
-        this.props.hasInstructorStaffRights
+        this.props.hasInstructorStaffRights,
       );
     }
   }
 
-  // hasUserRole() {
-  //   return (this.props.hasInstructorStaffRights !== undefined
-  // }
-
-  getBadgeProgress(courseStatus) {
+  getBadgeProgress() {
     const { progress } = this.props;
     if (progress) {
       return progress;
@@ -60,40 +47,32 @@ export default class Progress extends React.Component {
     const progress = this.getBadgeProgress();
     const { headings } = this.props;
 
-    // debugger;
-
-    // Todo: Need to add instructor scope to render out ProgressList.
-    // const hasInstructorStaffRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )
     if (this.props.hasInstructorStaffRights) {
-      // debugger;
-
       return (
         <React.Fragment>
-          <ProgressBanner has_progress={(progress.length ? true : false)} has_rights={this.props.hasInstructorStaffRights}/>
-          <ProgressCourseList headings={headings} data={progress}/>
+          <ProgressBanner hasProgress={(progress.length ? true : false)} hasRights={this.props.hasInstructorStaffRights} />
+          <ProgressCourseList headings={headings} data={progress} />
         </React.Fragment>
       );
     }
 
     return (
       <React.Fragment>
-        <ProgressBanner has_progress={(progress.length ? true : false)} has_rights={this.props.hasInstructorStaffRights}/>
+        <ProgressBanner hasProgress={(progress.length ? true : false)} hasRights={this.props.hasInstructorStaffRights} />
         <div className="row">
           <div className="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          {progress && (
-            <div className="row equal-col-height">
-              {progress.map(learnerProgress => (
-                <ProgressCard key={learnerProgress.block_id} data={learnerProgress} />
-              ))}
-            </div>
-          )}
+            {progress && (
+              <div className="row equal-col-height">
+                {progress.map(learnerProgress => (
+                  <ProgressCard key={learnerProgress.block_id} data={learnerProgress} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </React.Fragment>
     );
   }
-  // <div className="card-deck col-sm-12 col-md-12 col-lg-12 mb-3">
-  // <div className="col-sm-12 col-md-4 col-lg-3 mb-3">
 
   renderNoBadgeProgress() {
     return (
@@ -111,10 +90,7 @@ export default class Progress extends React.Component {
     );
   }
 
-
   render() {
-    const {progress} = this.props;
-
     return (
       <React.Fragment>
         <BackendStatusBanner />
@@ -127,43 +103,7 @@ export default class Progress extends React.Component {
       </React.Fragment>
     );
   }
-
-//       <div className="progress-container">
-// <div className="row">
-// <div className="col-sm-12 col-md-12 col-lg-12">
-// <div className="row equal-col-height">
-
-
-// <div className="d-flex justify-content-center">
-// <div className="progress-container">
-
-//
-// { this.props.showSpinner && (
-//   <div className="spinner-overlay">
-//     <Icon className={['fa', 'fa-spinner', 'fa-spin', 'fa-5x', 'color-black']} />
-//   </div>
-// )}
-//
-// { progress.length > 0 && (
-//   <ProgressList progress={progress} />
-// )}
-//
-
-//
-// </div>
-// </div>
-
 }
-//
-// Progress.defaultProps = {
-//   badges: [],
-//   match: {
-//     params: {
-//       user: '',
-//       courseId: '',
-//     },
-//   },
-// }
 
 Progress.propTypes = {
   progress: PropTypes.arrayOf(PropTypes.shape({
@@ -209,8 +149,29 @@ Progress.propTypes = {
   })),
   showSpinner: PropTypes.bool,
   hasInstructorStaffRights: PropTypes.bool,
+  userDetails: PropTypes.shape({
+    username: PropTypes.string,
+  }),
+  courseDetails: PropTypes.shape({
+    id: PropTypes.string,
+  }),
   getUserRoles: PropTypes.func.isRequired,
   getCourseBadgesProgress: PropTypes.func.isRequired,
 };
 
-
+Progress.defaultProps = {
+  progress: {
+    assertion: null,
+    badge_class: null,
+    block_id: '',
+    block_display_name: '',
+    block_order: 0,
+    course_id: '',
+    event_type: '',
+  },
+  headings: null,
+  showSpinner: false,
+  hasInstructorStaffRights: false,
+  userDetails: null,
+  courseDetails: null,
+};

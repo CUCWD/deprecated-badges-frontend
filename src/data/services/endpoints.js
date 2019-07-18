@@ -8,5 +8,5 @@ module.exports = {
   // dashboard: '/dashboard',
   heartbeat: '/heartbeat',
   userBadgeProgress: '/api/badges/v1/progress',
-  enrollmentRoles: '/api/enrollment/v1/roles'
+  enrollmentRoles: '/api/enrollment/v1/roles',
 };

@@ -6,7 +6,7 @@ import comment from './comment';
 import progress from './progress';
 import roles from './roles';
 import connectionStatus from './connectionStatus';
-import { badgeActions } from '../constants/actionTypes/progress';
+// import { badgeActions } from '../constants/actionTypes/progress';
 
 /* eslint-disable no-undef */
 const lmsDetails = () => lmsContext;

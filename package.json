@@ -65,6 +65,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "es-check": "^2.0.2",
     "eslint-config-edx": "^4.0.3",
+    "fetch-mock": "^5.13.1",
     "file-loader": "^1.1.9",
     "gh-pages": "^1.1.0",
     "html-webpack-harddisk-plugin": "^0.2.0",

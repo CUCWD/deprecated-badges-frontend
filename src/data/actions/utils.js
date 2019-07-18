@@ -29,14 +29,12 @@ onSort(direction) {
 },
 */
 const headingMapper = (filterKey, data) => {
-
   const dataSortable = data.slice();
 
   function all(entry) {
     // debugger;
     // columnSortable: true,
     if (entry) {
-
       // columnSortable: true,
       // onSort: () => {},
       const results = [{
@@ -75,33 +73,35 @@ const headingMapper = (filterKey, data) => {
     }
     return [];
   }
-/*
-  function some(entry) {
-    if (!entry) return [];
+  /*
+    function some(entry) {
+      if (!entry) return [];
 
-    const results = [{
-      label: 'Username',
-      key: 'username',
-    }];
+      const results = [{
+        label: 'Username',
+        key: 'username',
+      }];
 
-    const assignmentHeadings = entry.section_breakdown
-      .filter(section => section.label && section.category === filterKey)
-      .map(s => ({
-        label: s.label,
-        key: s.label,
-      }));
+      const assignmentHeadings = entry.section_breakdown
+        .filter(section => section.label && section.category === filterKey)
+        .map(s => ({
+          label: s.label,
+          key: s.label,
+        }));
 
-    const totals = [{
-      label: 'Total',
-      key: 'total',
-    }];
+      const totals = [{
+        label: 'Total',
+        key: 'total',
+      }];
 
-    return results.concat(assignmentHeadings).concat(totals);
-  }
-*/
+      return results.concat(assignmentHeadings).concat(totals);
+    }
+  */
   return filterKey === 'All' ? all : some;
 };
 
-//sortAlphaAsc
-export { headingMapper };
+// sortAlphaAsc
+export {
+  headingMapper,
+};
 
