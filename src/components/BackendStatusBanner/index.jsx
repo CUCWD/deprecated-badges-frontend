@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Button } from '@edx/paragon';
 
+import styles from './style.scss';
 import statusMap from './statusMap.json';
 import { pingLms } from '../../data/actions/connectionStatus';
 
@@ -46,7 +47,7 @@ class BackendStatusBanner extends React.Component {
           )}
         >
           <Button
-            children="↻"
+            label="↻"
             buttonType="sm"
             className={styles['btn-outline-primary']}
             onClick={this.props.pingLms}

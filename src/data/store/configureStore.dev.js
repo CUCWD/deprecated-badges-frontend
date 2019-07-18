@@ -20,7 +20,7 @@ const store = createStore(
     routerMiddleware(history), // for dispatching history actions
     thunkMiddleware,
     loggerMiddleware,
-    reduxImmutableStateInvariant()
+    reduxImmutableStateInvariant(),
   )),
 );
 

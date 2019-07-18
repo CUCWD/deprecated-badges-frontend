@@ -11,26 +11,26 @@ class BadgeDownload extends React.Component {
     super(props, context);
 
     this.state = {
-      response: {}
-    }
+      response: {},
+    };
   }
 
   componentDidMount() {
     // Load the remote this.props.url to get the response data before rendering.
     axios
       .get(this.props.url, {
-        responseType: 'arraybuffer'
+        responseType: 'arraybuffer',
       })
-      .then(data => {
-        this.setState({response: data});
+      .then((data) => {
+        this.setState({ response: data });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
         return null;
-      })
+      });
   }
 
-  loadImage(url) {
+  loadImage() {
     if (this.state.response.status === 200) {
       const buffer = new Buffer(this.state.response.data, 'binary');
       const fileAssertionName = this.state.response.config.url.split('/').slice(-2, -1)[0];
@@ -39,8 +39,8 @@ class BadgeDownload extends React.Component {
       return (
         <div className="badge-download">
           <DownloadLink
-            filename={fileAssertionName + '.' + mimeExtension}
-            exportFile={() => Promise.resolve( buffer )}
+            filename={`${fileAssertionName}.${mimeExtension}`}
+            exportFile={() => Promise.resolve(buffer)}
           >
             Download
           </DownloadLink>
@@ -53,14 +53,13 @@ class BadgeDownload extends React.Component {
 
   render() {
     return (
-      this.loadImage(this.props.url)
+      this.loadImage()
     );
   }
-
 }
 
 BadgeDownload.propTypes = {
   url: PropTypes.string.isRequired,
-}
+};
 
 export default BadgeDownload;

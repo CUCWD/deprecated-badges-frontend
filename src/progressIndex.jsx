@@ -20,7 +20,7 @@ import enLocaleData from 'react-intl/locale-data/en';
 
 import ProgressPage from './containers/ProgressPage';
 
-import history from './data/history';
+// import history from './data/history';
 import store from './data/store/configureStore';
 // import apiClient from './data/apiClient';
 
@@ -39,19 +39,14 @@ addLocaleData(enLocaleData);
 
 const ProgressApp = () => (
   <IntlProvider locale={locale} messages={messages}>
-      <Provider store={store}>
-        <main className="container mb-4 BFE-wrapper">
-          <ProgressPage/>
-        </main>
-      </Provider>
+    <Provider store={store}>
+      <main className="container mb-4 BFE-wrapper">
+        <ProgressPage />
+      </main>
+    </Provider>
   </IntlProvider>
 );
-/*
-<div className="BFE-wrapper">
-  <ProgressPage/>
-</div>
-*/
 
 // if (apiClient.ensurePublicOrAuthencationAndCookies(window.location.pathname)) {
-  ReactDOM.render(<ProgressApp />, document.getElementById('root'));
+ReactDOM.render(<ProgressApp />, document.getElementById('root'));
 // }

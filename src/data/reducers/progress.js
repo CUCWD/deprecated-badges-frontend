@@ -1,6 +1,5 @@
-
-import { badgeActions } from '../constants/actionTypes/progress';
 import { combineReducers } from 'redux';
+import { badgeActions } from '../constants/actionTypes/progress';
 
 const initialState = {
   results: [],
@@ -11,16 +10,14 @@ const initialState = {
   showSpinner: true,
 };
 
-function debug(args) {
-    debugger;
-  return true;
-}
+// function debug(args) {
+//     debugger;
+//   return true;
+// }
 
 const badges = (state = initialState, action) => {
-  switch(action.type)
-  {
+  switch (action.type) {
     case badgeActions.request.REQUEST_GOT_COURSE_BADGES:
-      // debugger;
       return {
         ...state,
         results: action.progress,

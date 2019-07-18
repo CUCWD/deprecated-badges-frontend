@@ -2,26 +2,26 @@
 import { badgeActions } from '../constants/actionTypes/progress';
 // import * as apiClient from '../api/mock/client';
 // import * as apiClient from '../api/client';
+import { headingMapper } from './utils'; // sortAlphaAsc
+import LmsApiService from '../services/LmsApiService';
+import metadata from "../reducers/roles";
 
-import { headingMapper } from './utils'; //sortAlphaAsc
 const defaultAssignmentFilter = 'All';
 
-import LmsApiService from '../services/LmsApiService';
-
-function debug(args) {
-    debugger;
-  return true;
-}
+// function debug(args) {
+//     debugger;
+//   return true;
+// }
 
 const startFetchingCourseBadgeProgress = () => (
   {
-    type: badgeActions.request.REQUEST_STARTED_FETCHING_COURSE_BADGES
+    type: badgeActions.request.REQUEST_STARTED_FETCHING_COURSE_BADGES,
   }
 );
 
 const finishedFetchingCourseBadgeProgress = () => (
   {
-    type: badgeActions.request.REQUEST_FINISHED_FETCHING_COURSE_BADGES
+    type: badgeActions.request.REQUEST_FINISHED_FETCHING_COURSE_BADGES,
   }
 );
 
@@ -29,7 +29,7 @@ const errorFetchingCourseBadgeProgress = (response, previousCourseBadgesState) =
   {
     type: badgeActions.request.REQUEST_ERROR_FETCHING_COURSE_BADGES,
     response,
-    previousState: previousCourseBadgesState
+    previousState: previousCourseBadgesState,
   }
 );
 
@@ -43,28 +43,20 @@ const gotCourseBadgeProgress = (progress, headings) => (
 
 const fetchCourseBadgesProgress = (userName, courseId, hasInstructorStaffRights = false) => (
   (dispatch) => {
-
     dispatch(startFetchingCourseBadgeProgress());
 
-    // debugger;
-
-    // const hasInstructorRights = false;  // ( this.props.userDetails.role == 'staff' ? true : false )
     if (hasInstructorStaffRights) {
-      // debugger;
       return LmsApiService.requestCourseBadgeProgress(courseId)
         .then((response) => {
-          // debugger;
           if (response.ok) {
             return (process.env.MOCK_LMS_API ? response.result : response.json());
           }
           throw new Error(response);
         })
         .then((data) => {
-          // debugger;
-
           dispatch(gotCourseBadgeProgress(
             data,
-            headingMapper(defaultAssignmentFilter, data)(data[0])
+            headingMapper(defaultAssignmentFilter, data)(data[0]),
           ));
           dispatch(finishedFetchingCourseBadgeProgress());
 
@@ -76,32 +68,25 @@ const fetchCourseBadgesProgress = (userName, courseId, hasInstructorStaffRights 
           return Promise.resolve();
         });
     }
-    else {
-      // debugger;
-      return LmsApiService.requestUserBadgeProgress(courseId, userName)
-        .then((response) => {
-          // debugger;
-          if (response.ok) {
-            return (process.env.MOCK_LMS_API ? response.result : response.json());
-          }
-          throw new Error(response);
-        })
-        .then((data) => {
-          // debugger;
 
-          dispatch(gotCourseBadgeProgress(
-            data
-          ));
-          dispatch(finishedFetchingCourseBadgeProgress());
+    return LmsApiService.requestUserBadgeProgress(courseId, userName)
+      .then((response) => {
+        if (response.ok) {
+          return (process.env.MOCK_LMS_API ? response.result : response.json());
+        }
+        throw new Error(response);
+      })
+      .then((data) => {
+        dispatch(gotCourseBadgeProgress(data));
+        dispatch(finishedFetchingCourseBadgeProgress());
 
-          return Promise.resolve();
-        })
-        .catch((error) => {
-          dispatch(errorFetchingCourseBadgeProgress(error));
+        return Promise.resolve();
+      })
+      .catch((error) => {
+        dispatch(errorFetchingCourseBadgeProgress(error));
 
-          return Promise.resolve();
-        });
-    }
+        return Promise.resolve();
+      });
   }
 );
 

@@ -17,10 +17,10 @@ import { IntlProvider } from 'react-intl';
 // import { ConnectedRouter } from 'connected-react-router';
 // import { PrivateRoute } from '@edx/frontend-auth';
 
-import PostsPage from './containers/PostsPage';
-import CommentSearchPage from './containers/CommentSearchPage';
-import DisclosurePage from './containers/DisclosurePage';
-import history from './data/history';
+// import PostsPage from './containers/PostsPage';
+// import CommentSearchPage from './containers/CommentSearchPage';
+// import DisclosurePage from './containers/DisclosurePage';
+// import history from './data/history';
 import store from './data/store/configureStore';
 import loadI18nDomData from './utils/i18n/loadI18nDomData';
 // import apiClient from './data/apiClient';
@@ -32,18 +32,18 @@ const i18nData = loadI18nDomData();
 
 const App = () => (
   <IntlProvider locale={i18nData.locale} messages={i18nData.messages}>
-      <Provider store={store}>
-          <div className="BFE-wrapper">
-              <h2>Badges Home</h2>
-              <p>
-                  The badges microfrontend (MFE) provides access to course badge progress. Additional changes will include
-                  leaderboard updates to compare existing learner against other learners of the course.
-              </p>
-          </div>
-      </Provider>
+    <Provider store={store}>
+      <div className="BFE-wrapper">
+        <h2>Badges Home</h2>
+        <p>
+          The badges microfrontend (MFE) provides access to course badge progress. Additional changes will include
+          leaderboard updates to compare existing learner against other learners of the course.
+        </p>
+      </div>
+    </Provider>
   </IntlProvider>
 );
 
 // if (apiClient.ensurePublicOrAuthencationAndCookies(window.location.pathname)) {
-  ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 // }
