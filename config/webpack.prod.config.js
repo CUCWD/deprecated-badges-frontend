@@ -11,8 +11,11 @@ module.exports = Merge.smart(commonConfig, {
   mode: 'production',
   devtool: 'source-map',
   output: {
-    filename: '[name].[chunkhash].js',
+    filename: '[name].min.js',
     path: path.resolve(__dirname, '../dist'),
+    // The webpack runtime will attach itself to window.studiofrontendJsonP instead of
+    // window.webpackJsonP so that it does not conflict with the platform's webpack runtime.
+    jsonpFunction: 'badgesfrontendJsonP',
   },
   module: {
     // Specify file-by-file rules to Webpack. Some file-types need a particular kind of loader.
@@ -47,7 +50,22 @@ module.exports = Merge.smart(commonConfig, {
               minimize: true,
             },
           },
-          'postcss-loader', // for autoprefixing, needs to be before the sass loader, not sure why
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              ident: 'postcss',
+              plugins: () => [
+                /* eslint-disable global-require */
+                require('autoprefixer'),
+                require('../src/utils/matches-prefixer.js'),
+                require('postcss-pseudo-class-any-link'),
+                require('postcss-initial')(),
+                require('postcss-prepend-selector')({ selector: '#root.BFE ' }),
+                /* eslint-enable global-require */
+              ],
+            },
+          }, // for autoprefixing, needs to be before the sass loader, not sure why
           {
             loader: 'sass-loader', // compiles Sass to CSS
             options: {
@@ -86,7 +104,7 @@ module.exports = Merge.smart(commonConfig, {
     }),
     // Writes the extracted CSS from each entry to a file in the output directory.
     new MiniCssExtractPlugin({
-      filename: '[name].[chunkhash].css',
+      filename: '[name].min.css',
     }),
     // Generates an HTML file in the output directory.
     new HtmlWebpackPlugin({

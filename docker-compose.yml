@@ -15,5 +15,11 @@ services:
       - '1991:1991'
     environment:
       - NODE_ENV=development
+
+networks:
+  default:
+    external:
+      name: devstack_default
+
 volumes:
   notused: null

@@ -1,2 +1,32 @@
 @import "~@edx/edx-bootstrap/sass/edx/theme";
 @import "~bootstrap/scss/bootstrap";
+
+$fa-font-path: "font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
+@import './mixins.scss';
+@import './BFE.scss';
+
+@import "./components/BackendStatusBanner/style";
+@import "./components/Progress/style";
+@import "./components/ProgressBanner/style";
+@import "./components/ProgressCard/style";
+@import "./components/ProgressCardStatus/style";
+@import "./components/ProgressDetails/style";
+@import "./components/ProgressCourseList/style";
+@import "./components/ProgressCourseListItem/style";
+@import "./components/BadgeDownload/style";
+
+/* Remove bullets in the primary navigation due to BFE.scss */
+.nav {
+  .nav-item {
+    list-style-type: none;
+  }
+}
+
+/* Adding this to make sure that the SCSS for Collapsible gets set back to the default
+   For some reason not doing this the collapsible component wouldn't work correctly.
+   https://openedx.slack.com/archives/C0EUBSV7D/p1556733659001800
+*/
+@import "~@edx/paragon/src/Collapsible/Collapsible";
+

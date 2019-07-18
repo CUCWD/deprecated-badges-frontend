@@ -1,0 +1,44 @@
+
+.card-status {
+  position: relative;
+  top: -5px;
+
+  .card-status-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 15%;
+    margin: 16px 16px 16px 0px;
+    //position: relative;
+    //top: 5px;
+
+    &.complete {
+      color: rgb(0, 129, 0);
+    }
+
+    &.incomplete {
+      color: rgb(165, 165, 165);
+    }
+
+  }
+
+  /*
+  h3 {
+    max-width: 280px;
+    display: inline-block;
+    @include line-clamp(2,2);
+  }
+  */
+  .card-status-title {
+    font-size: 14px;
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+    width: 75%;
+    margin: 5px 0px;
+    //position: relative;
+    //left: 44px;
+    //top: -34px;
+    //width: 100px;
+  }
+
+}

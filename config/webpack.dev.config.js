@@ -1,3 +1,5 @@
+'use strict';
+
 // This is the dev Webpack config. All settings here should prefer a fast build
 // time at the expense of creating larger, unoptimized bundles.
 const Merge = require('webpack-merge');
@@ -5,15 +7,18 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
+const apiEndpoints = require('../src/data/services/endpoints.js');
 const commonConfig = require('./webpack.common.config.js');
+
+const targetUrl = 'http://courses.edx.devstack.lms:18000';
 
 module.exports = Merge.smart(commonConfig, {
   mode: 'development',
-  entry: [
-    // enable react's custom hot dev client so we get errors reported in the browser
-    require.resolve('react-dev-utils/webpackHotDevClient'),
-    path.resolve(__dirname, '../src/index.jsx'),
-  ],
+  // entry: [
+  //   // enable react's custom hot dev client so we get errors reported in the browser
+  //   require.resolve('react-dev-utils/webpackHotDevClient'),
+  //   // path.resolve(__dirname, '../src/index.jsx'),
+  // ],
   module: {
     // Specify file-by-file rules to Webpack. Some file-types need a particular kind of loader.
     rules: [
@@ -42,6 +47,25 @@ module.exports = Merge.smart(commonConfig, {
             loader: 'css-loader', // translates CSS into CommonJS
             options: {
               sourceMap: true,
+              modules: true,
+              localIdentName: '[local]',
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              ident: 'postcss',
+              plugins: () => [
+                /* eslint-disable global-require */
+                require('autoprefixer'),
+                require('../src/utils/matches-prefixer.js'),
+                require('postcss-pseudo-class-any-link'),
+                require('postcss-initial')(),
+                require('postcss-prepend-selector')({ selector: '#root.BFE ' }),
+                /* eslint-enable global-require */
+              ],
             },
           },
           {
@@ -73,8 +97,15 @@ module.exports = Merge.smart(commonConfig, {
       inject: true, // Appends script tags linking to the webpack bundles at the end of the body
       template: path.resolve(__dirname, '../public/index.html'),
     }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      chunks: ['progress'],
+      filename: 'progress.html',
+      template: path.resolve(__dirname, '../public/index.html'),
+    }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
+      MOCK_LMS_API: false,
       BASE_URL: 'localhost:1991',
       LMS_BASE_URL: 'http://localhost:18000',
       LOGIN_URL: 'http://localhost:18000/login',
@@ -94,8 +125,19 @@ module.exports = Merge.smart(commonConfig, {
   devServer: {
     host: '0.0.0.0',
     port: 1991,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     historyApiFallback: true,
     hot: true,
     inline: true,
+    overlay: true,
+    proxy: Object.keys(apiEndpoints).reduce(
+      (map, endpoint) => {
+        map[apiEndpoints[endpoint]] = { // eslint-disable-line no-param-reassign
+          target: targetUrl,
+        };
+        return map;
+      }, {}),
   },
 });

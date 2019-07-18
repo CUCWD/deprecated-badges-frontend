@@ -1,11 +1,47 @@
 <!doctype html>
 <html>
   <head>
+    <style>
+      html {
+        font-size: 62.5%;
+        background-color: rgb(245, 245, 245);
+      }
+    </style>
     <base href="/" />
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <div id="root"></div>
+  <!-- This script tag is being included for testing within -->
+  <!-- the studio frontend container locally.  This value will be -->
+  <!-- dynamically passed in from LMS backend when BFE is -->
+  <!-- run from within Platform. -->
+  <script type="text/javascript" id='lmsContext'>
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-var */
+/* eslint-disable quotes */
+var lmsContext = {
+  course: {
+    lang: "fr",
+    url_name: "course",
+    name: "edX Demonstration Course",
+    display_course_number: "",
+    num: "DemoX",
+    org: "edX",
+    id: "course-v1:edX+DemoX+Demo_Course",
+    revision: "",
+    base_url: "http://localhost:18010",
+  },
+  user: {
+    username: "edx",
+    email: "edx@example.com",
+    is_staff: "True",
+    is_superuser: "True",
+    is_authenticated: "True"
+  }
+};
+  </script>
+    <h1>badges-frontend</h1>
+    <div id="root" class="BFE"></div>
   </body>
 </html>
