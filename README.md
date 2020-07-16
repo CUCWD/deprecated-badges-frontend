@@ -1,3 +1,8 @@
+# ⛔️ DEPRECATION WARNING
+**This library is deprecated and archived.**
+
+New course badge progress [frontend-app-badge-progress](https://github.com/CUCWD/frontend-app-badge-progress) can be used starting with the Ironwood release. This repo is only to be used with Hawthron release.  
+
 [![Greenkeeper badge](https://badges.greenkeeper.io/edx/front-end-cookie-cutter-application.svg)](https://greenkeeper.io/)
 
 # badges-frontend
