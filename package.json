@@ -80,7 +80,7 @@
     "postcss-prepend-selector": "^0.3.1",
     "postcss-pseudo-class-any-link": "^4.0.0",
     "postcss-strip-font-face": "^1.0.0",
-    "react-dev-utils": "^5.0.0",
+    "react-dev-utils": "^11.0.4",
     "react-test-renderer": "^16.2.0",
     "redux-immutable-state-invariant": "1.2.3",
     "redux-mock-store": "^1.5.1",
